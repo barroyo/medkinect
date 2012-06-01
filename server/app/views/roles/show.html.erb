@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<%= @role.nil? ? 'null' : 'no null' %>
+<%= @user.username %>
+
+<%= render 'form' %>
+
+<%= link_to 'Edit', edit_role_path(@role) %> |
+<%= link_to 'Back', roles_path %>

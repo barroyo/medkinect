@@ -1,0 +1,3 @@
+http://mysql.skynet.be/Downloads/Connector-C/mysql-connector-c-noinstall-6.0.2-win32.zip
+
+gem install msyql2 # case windows download the adapter and copy libmysql.dll into ruby/bin
