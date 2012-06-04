@@ -4,11 +4,13 @@ Server::Application.routes.draw do
   resources :users do
     resources :roles
   end
-  
-  match 'users/:id/rol' => 'roles#show'
+	
+	put '/users'
+	
+  #match 'users/:id/rol' => 'roles#show'
   
 
-  # The priority is based upon order of creation:
+	# The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:

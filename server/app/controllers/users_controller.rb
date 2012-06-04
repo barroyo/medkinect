@@ -3,11 +3,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
+    respond_with(@users)
   end
 
   # GET /users/1
@@ -15,10 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user.role = Role.find(@user.id)
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
+    respond_with(@user)
   end
 
   # GET /users/new
@@ -26,10 +19,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
-    end
+    respond_with(@user)
   end
 
   # GET /users/1/edit

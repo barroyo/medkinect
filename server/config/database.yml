@@ -11,12 +11,12 @@
 development:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
+  reconnect: true
   database: server_development
-  pool: 5
-  username: root
-  password:
-  host: localhost
+  username: <%=ENV['mysql_user']%>
+  password: <%=ENV['mysql_password']%>
+  host: 127.0.0.1 
+  port: 3306
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,8 +27,8 @@ test:
   reconnect: false
   database: server_test
   pool: 5
-  username: root
-  password:
+  username: <%=ENV['mysql_user']%>
+  password: <%=ENV['mysql_password']%>
   host: localhost
 
 production:
@@ -37,6 +37,6 @@ production:
   reconnect: false
   database: server_production
   pool: 5
-  username: root
-  password:
+  username: <%=ENV['mysql_user']%>
+  password: <%=ENV['mysql_password']%>
   host: localhost

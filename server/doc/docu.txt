@@ -1,3 +1,19 @@
+// railsinstaller.org
+
+setear las environment variables : mysql_user y mysq_password,
+crear las bases de datos: server_development, server_test, server_production // se puede realizar con rake db:migrate, sin embargo no me agrada
+
+descargar:
 http://mysql.skynet.be/Downloads/Connector-C/mysql-connector-c-noinstall-6.0.2-win32.zip
 
-gem install msyql2 # case windows download the adapter and copy libmysql.dll into ruby/bin
+ejecutar:
+gem install msyql2 
+
+# case windows download the adapter and copy libmysql.dll into ruby/bin
+
+después ejecutar: bundle install <<< así solito, sin nada antes , nada de rake, rails ni gem
+
+ahora correr el : rake db:migrate
+
+eso debería ejecutar los miragrations files, y dejar su base de datos al día
+
