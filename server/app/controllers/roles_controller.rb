@@ -13,8 +13,7 @@ class RolesController < ApplicationController
   # GET /roles/1
   # GET /roles/1.json
   def show
-    @user = User.find(params[:id])
-    @role = @user.role
+    @role = Role.find(params[:id])
     
     respond_to do |format|
       format.html # show.html.erb
@@ -25,9 +24,8 @@ class RolesController < ApplicationController
   # GET /roles/new
   # GET /roles/new.json
   def new
-    @user = User.find(params[:id])
-    
-    @role = @user.build_role
+
+    @role = Role.new
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,0 +1,17 @@
+<h1>Listing Specialisms</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+
+<% @Specialisms.each do |specialism| %>
+  <tr>
+    <td><%= specialism.title %></td>
+    <td><%= specialism.description %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

@@ -1,11 +1,13 @@
 Server::Application.routes.draw do
   resources :roles
-  
+  resources :specialisms
   resources :users do
     resources :roles
   end
 	
-	put '/users'
+	put '/users' => 'users#update'
+	
+	put '/user/:id' => 'users#update'
 	
   #match 'users/:id/rol' => 'roles#show'
   

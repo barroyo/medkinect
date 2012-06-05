@@ -1,9 +1,9 @@
-class UsersController < ApplicationController
+class SpecialismsController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    respond_with(@users)
+    @Specialisms = Specialism.all
+    respond_with(@Specialisms)
   end
 
   # GET /users/1
