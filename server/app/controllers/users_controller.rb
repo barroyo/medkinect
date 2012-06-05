@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user.role = Role.find(@user.role_id)
-		@user.specialismships.collect { |a| a.specialism }
+	@user.specialismships.collect { |a| a.specialism }
     respond_with(@user)
   end
 
@@ -26,13 +26,20 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+	@user.specialismships.collect { |a| a.specialism }
+	# all especialisms where not in user.specialisms :D yeah toper rocks \m/
+	if @user.specialisms.size > 0
+		@specialismslist = Specialism.find(:all, :conditions => ['id not in (?)', @user.specialisms.map(&:id)])
+	else
+		@specialismslist = Specialism.find(:all)
+	end
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
+	
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -48,10 +55,19 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
+    @user.specialisms.destroy_all
+	
+	@specialityes = params[:specialism]
+	
+	if !@specialityes.empty?
+		@specialityes.each do |id| 
+			Specialismship.new({:specialism_id => id, :user_id => @user.id}).save
+		end
+	end
+	
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice:  @specialityes}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

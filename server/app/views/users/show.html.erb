@@ -28,12 +28,15 @@
   <b>Role:</b>
   <%= @user.role.title %>
 </p>
+<% if @user.specialisms.size > 0 %>
 <p>
-  <b>Specialisms: <%= @user.specialisms.size%> 12312</b>
+  <b>Specialisms: </b>
   <% @user.specialisms.each do |special| %>
 	<%= special.title%>
 	<%end%>
 </p>
+<% end %>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

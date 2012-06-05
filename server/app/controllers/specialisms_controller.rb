@@ -9,37 +9,35 @@ class SpecialismsController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
-    @user.role = Role.find(@user.role_id)
-		@user.specialismships.collect { |a| a.specialism }
-    respond_with(@user)
+    @specialism = Specialism.find(params[:id])
+    respond_with(@specialism)
   end
 
   # GET /users/new
   # GET /users/new.json
   def new
-    @user = User.new
+    @specialism = Specialism.new
 
-    respond_with(@user)
+    respond_with(@specialism)
   end
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+     @specialism = Specialism.find(params[:id])
   end
 
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
-
+    @specialism = Specialism.new(params[:specialism])
+    
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+      if @specialism.save
+        format.html { redirect_to @specialism, notice: 'Specialism was successfully created.' }
+        format.json { render json: @Specialism, status: :created, location: @user }
       else
         format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @Specialism.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,15 +45,15 @@ class SpecialismsController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+    @specialism = Specialism.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+      if @specialism.update_attributes(params[:specialism])
+        format.html { redirect_to @specialism, notice: 'Specialism was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @specialism.errors, status: :unprocessable_entity }
       end
     end
   end

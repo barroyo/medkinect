@@ -5,6 +5,31 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <style>
+   /*  yes yes, i know, dont use css here.. but is very late and i dont wanna create a file >.< im sleepy */
+		a.arrow {
+			display: block;
+			border: 1px solid #aaa;
+			text-decoration: none;
+			background-color: #fafafa;
+			color: #123456;
+			margin: 2px;
+			clear:both;
+		}
+		select.select-box {
+			min-width:150px;
+		}
+  </style>
+  <script type="text/javascript">
+	$().ready(function() {
+		$('#add-row').click(function() {
+			return !$('#select1 option:selected').remove().appendTo('#select2');
+		});
+		$('#remove-row').click(function() {
+			return !$('#select2 option:selected').remove().appendTo('#select1');
+		});
+	});
+</script>
 </head>
 <body>
 

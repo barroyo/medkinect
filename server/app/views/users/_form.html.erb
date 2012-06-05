@@ -31,6 +31,25 @@
     <%= f.label :status %><br />
     <%= f.text_field :status %>
   </div>
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= select("user", "role_id", Role.all.collect {|p| [ p.title, p.id ]} ) %>
+  </div>
+  <div class="field">
+    <%= f.label :specialism %><br />
+	<table>
+		<tr>
+			<td>
+				<%= select_tag  "specialismlist", options_from_collection_for_select(@specialismslist,"id", "title"), :multiple=>true, :size => 8, :id => "select1", :class=>"select-box" %><br>
+				<a href="#" id="add-row" class="arrow">add >></a>
+			</td>
+			<td>
+				<%= select_tag "specialism",options_from_collection_for_select(@user.specialisms,"id", "title"), :multiple=>true, :size => 8, :id => "select2",:class=>"select-box" %><br>
+				<a href="#" id="remove-row" class="arrow"><< remove</a>
+			</td>
+		</tr>
+	</table>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
