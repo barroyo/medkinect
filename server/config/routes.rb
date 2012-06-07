@@ -1,10 +1,17 @@
 Server::Application.routes.draw do
+  resources :sicks
+
+  resources :patients
+
   resources :roles
   resources :specialisms
   resources :users do
     resources :roles
   end
 	
+	
+	post 'users' => 'users#new'
+	 
 	put '/users' => 'users#update'
 	
 	put '/user/:id' => 'users#update'

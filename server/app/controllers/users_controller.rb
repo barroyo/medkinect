@@ -3,23 +3,27 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    respond_with(@users)
+    respond_to { |format|
+      format.html
+      format.json { render :json => @users.to_json(:include => :specialisms) }
+    }
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @user.role = Role.find(@user.role_id)
-	@user.specialismships.collect { |a| a.specialism }
-    respond_with(@user)
+    respond_to { |format|
+      format.html
+      format.json { render :json => @user.to_json(:include => [:specialisms,:role]) }
+    }
   end
 
   # GET /users/new
   # GET /users/new.json
   def new
     @user = User.new
-
+    @specialismslist = Specialism.find(:all)
     respond_with(@user)
   end
 
@@ -57,7 +61,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.specialisms.destroy_all
 	
-	@specialityes = params[:specialism]
+	 @specialityes = params[:specialism]
 	
 	if !@specialityes.empty?
 		@specialityes.each do |id| 
