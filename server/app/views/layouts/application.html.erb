@@ -7,74 +7,78 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="content">
-<div id="header">
-	<div id="menu">
-	<ul id="nav">
-	<li class="top"><a href="#nogo1" class="top_link"><span>Home</span></a></li>
-	<li class="top"><a href="/users" class="top_link"><span class="down">Users</span> </a>
-		<ul class="sub">
-			<li><%= link_to 'New User', new_user_path , :id => "news_user" %></li>
-		</ul>
-	</li>
-	<li class="top"><a href="/patients" class="top_link"><span class="down">Patients</span> </a>
-		<ul class="sub">
-			<li><%= link_to 'New Patient', new_patient_path , :id => "news_patient" %></li>
-		</ul>
-	</li>
-	<li class="top"><a href="#nogo27" id="contacts" class="top_link"><span class="down">Contacts</span></a>
-		<ul class="sub">
-			<li><a href="#nogo28">Support</a></li>
-			<li><a href="#nogo29" class="fly">Sales</a>
-				<ul>
-					<li><a href="#nogo30">USA</a></li>
-					<li><a href="#nogo31">Canadian</a></li>
-					<li><a href="#nogo32">South American</a></li>
-					<li><a href="#nogo33" class="fly">European</a>
-						<ul>
-							<li><a href="#nogo34" class="fly">British</a>
-								<ul>
-									<li><a href="#nogo35">London</a></li>
-									<li><a href="#nogo36">Liverpool</a></li>
-									<li><a href="#nogo37">Glasgow</a></li>
-									<li><a href="#nogo38" class="fly">Bristol</a>
-										<ul>
-											<li><a href="#nogo39">Redland</a></li>
-											<li><a href="#nogo40">Hanham</a></li>
-											<li><a href="#nogo41">Eastville</a></li>
-										</ul>
-									</li>
-									<li><a href="#nogo42">Cardiff</a></li>
-									<li><a href="#nogo43">Belfast</a></li>
-								</ul>
-							</li>
-							<li><a href="#nogo44">French</a></li>
-							<li><a href="#nogo45">German</a></li>
-							<li><a href="#nogo46">Spanish</a></li>
-						</ul>
-					</li>
-					<li><a href="#nogo47">Australian</a></li>
-					<li><a href="#nogo48">Asian</a></li>
+	<div class="body_wrap">
+		<div class="entry_page">
+		<div id="header">
+			<div id="menu">
+			<ul id="nav">
+			<li class="top"><a href="#nogo1" class="top_link"><span>Home</span></a></li>
+			<li class="top"><a href="/users" class="top_link"><span class="down">Users</span> </a>
+				<ul class="sub">
+					<li><%= link_to 'New User', new_user_path , :id => "news_user" %></li>
 				</ul>
 			</li>
-			<li><a href="#nogo49">Buying</a></li>
-			<li><a href="#nogo50">Photographers</a></li>
-			<li><a href="#nogo51">Stockist</a></li>
-			<li><a href="#nogo52">General</a></li>
+			<li class="top"><a href="/patients" class="top_link"><span class="down">Patients</span> </a>
+				<ul class="sub">
+					<li><%= link_to 'New Patient', new_patient_path , :id => "news_patient" %></li>
+				</ul>
+			</li>
+			<li class="top"><a href="#nogo27" id="contacts" class="top_link"><span class="down">Contacts</span></a>
+				<ul class="sub">
+					<li><a href="#nogo28">Support</a></li>
+					<li><a href="#nogo29" class="fly">Sales</a>
+						<ul>
+							<li><a href="#nogo30">USA</a></li>
+							<li><a href="#nogo31">Canadian</a></li>
+							<li><a href="#nogo32">South American</a></li>
+							<li><a href="#nogo33" class="fly">European</a>
+								<ul>
+									<li><a href="#nogo34" class="fly">British</a>
+										<ul>
+											<li><a href="#nogo35">London</a></li>
+											<li><a href="#nogo36">Liverpool</a></li>
+											<li><a href="#nogo37">Glasgow</a></li>
+											<li><a href="#nogo38" class="fly">Bristol</a>
+												<ul>
+													<li><a href="#nogo39">Redland</a></li>
+													<li><a href="#nogo40">Hanham</a></li>
+													<li><a href="#nogo41">Eastville</a></li>
+												</ul>
+											</li>
+											<li><a href="#nogo42">Cardiff</a></li>
+											<li><a href="#nogo43">Belfast</a></li>
+										</ul>
+									</li>
+									<li><a href="#nogo44">French</a></li>
+									<li><a href="#nogo45">German</a></li>
+									<li><a href="#nogo46">Spanish</a></li>
+								</ul>
+							</li>
+							<li><a href="#nogo47">Australian</a></li>
+							<li><a href="#nogo48">Asian</a></li>
+						</ul>
+					</li>
+					<li><a href="#nogo49">Buying</a></li>
+					<li><a href="#nogo50">Photographers</a></li>
+					<li><a href="#nogo51">Stockist</a></li>
+					<li><a href="#nogo52">General</a></li>
+				</ul>
+			</li>
+			<li class="top"><a href="#nogo53" id="shop" class="top_link"><span class="down">Shop</span></a>
+				<ul class="sub">
+					<li><a href="#nogo54">Online</a></li>
+					<li><a href="#nogo55">Catalogue</a></li>
+					<li><a href="#nogo56">Mail Order</a></li>
+				</ul>
+			</li>
+			<li class="top"><a href="#nogo57" id="privacy" class="top_link"><span>Privacy Policy</span></a></li>
 		</ul>
-	</li>
-	<li class="top"><a href="#nogo53" id="shop" class="top_link"><span class="down">Shop</span></a>
-		<ul class="sub">
-			<li><a href="#nogo54">Online</a></li>
-			<li><a href="#nogo55">Catalogue</a></li>
-			<li><a href="#nogo56">Mail Order</a></li>
-		</ul>
-	</li>
-	<li class="top"><a href="#nogo57" id="privacy" class="top_link"><span>Privacy Policy</span></a></li>
-</ul>
+		</div>
+		</div>
+		<div  class="middle">
+			<%= yield %>
+		</div>
+		</div>
 	</div>
-</div>
-<%= yield %>
-</div>
 </body>
 </html>

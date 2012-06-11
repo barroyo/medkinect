@@ -61,10 +61,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.specialisms.destroy_all
 	
-	 @specialityes = params[:specialism]
+	 @specialityes = params[:specialisms]
 	
-	if !@specialityes.empty?
-		@specialityes.each do |id| 
+	if !@specialityes.nil?
+		  @specialityes.each do |id| 
 			Specialismship.new({:specialism_id => id, :user_id => @user.id}).save
 		end
 	end

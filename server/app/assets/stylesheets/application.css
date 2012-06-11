@@ -25,8 +25,28 @@ select.select-box {
 }
 
 body {
-	background-color: #EFEFEF; 
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; 
+  margin: 0px;
+  background-color: #ECFAFB;
+  min-height: 638px;
 }
+
+.entry_page {
+		width: 900px;
+	margin: auto;
+}
+
+.body_wrap {
+	background: url(body_top.jpg) center top no-repeat;
+	width: 100%;
+	min-height: 400px;
+}
+.middle {
+}
+
 
 body > div.content{
 	width: 900px;
