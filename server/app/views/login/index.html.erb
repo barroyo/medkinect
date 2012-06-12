@@ -1,0 +1,10 @@
+
+<%= form_tag("login/login",:method => "post", :class => "nifty_form") do  %>
+	<%= label_tag(:username,"Username:") %>
+	<%= tag(:input,{:type => "text", :placeholder =>"Username",:class => "require nospecialchars",:id=>"username_input",:maxlength => "20"})%>
+	<%= tag(:br)%>
+	<%= label_tag(:password,"Password:") %>
+	<%= tag(:input,{:type => "password", :placeholder =>"password", :class => "require nospecialchars", :id =>"password_input",:maxlength => "20"}) %>
+	<%= submit_tag('Login')%>
+<% end %>
+<%= flash[:message] %>

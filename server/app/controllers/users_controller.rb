@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find(:all, :conditions => [ "username = ? and password = ?", params[:username], Digest::MD5.hexdigest(params[:password])])
+    @user = User.authenticate(params[:username],params[:password])
     respond_to { |format|
       format.json { render :json => @user.to_json(:include => [:specialisms,:role]) }
     }

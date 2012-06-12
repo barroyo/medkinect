@@ -1,4 +1,10 @@
 Server::Application.routes.draw do
+  root :to => 'login#index'
+  
+  get "login/index"
+  post "login/login"
+  get "login/logout"
+
   resources :sicks
 
   resources :patients
