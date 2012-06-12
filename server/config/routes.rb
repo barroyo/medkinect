@@ -9,7 +9,7 @@ Server::Application.routes.draw do
     resources :roles
   end
 	
-	
+	post 'users/login' , :defaults => { :format => 'json' } 
 	post 'users' => 'users#new'
 	 
 	put '/users' => 'users#update'
