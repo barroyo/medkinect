@@ -43,9 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="functions.cs" />
+    <Compile Include="specialisms.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="main.cs" />
+    <Compile Include="ApiMedkinect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

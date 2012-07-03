@@ -8,7 +8,7 @@ namespace API_MEDKINECT
 {
     public class User
     {
-
+        ApiMedkinect apiMedkinect = new ApiMedkinect(null);
         public User() { }
 
         public string email;
@@ -29,6 +29,53 @@ namespace API_MEDKINECT
         public string status;
 
         public int id;
+
+        public List<specialisms> specialisms = new List<specialisms>();
+
+
+
+
+        public Object loggin()
+        {
+            Object result;
+            result = apiMedkinect.conexion_rest("post", "api/users/login", this, 0);
+            return result;
+        }
+
+        public Object update_user()
+        {
+            Object result;
+            result = apiMedkinect.conexion_rest("put", "api/users", this, this.id);
+            return result;
+        }
+
+        public Object create_user()
+        {
+            Object result;
+            result = apiMedkinect.conexion_rest("post", "api/users", this, 0);
+            return result;
+        }
+
+        public Object delete_user()
+        {
+            Object result;
+            result = apiMedkinect.conexion_rest("delete", "api/users", null, this.id);
+            return result;
+        }
+
+        public Object get_user()
+        {
+            Object result;
+            result = apiMedkinect.conexion_rest("get", "api/users", null, this.id);
+            return result;
+        }
+
+        public Object get_all_user()
+        {
+            Object result;
+            result = apiMedkinect.conexion_rest("getall", "api/users", null, 0);
+            return result;
+        }
 
 
     }
