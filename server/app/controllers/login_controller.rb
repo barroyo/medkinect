@@ -1,7 +1,7 @@
 class LoginController < ApplicationController
   def index
     if !session[:user].nil?
-      redirect_to :controller => "users", :action => "index"
+      redirect_to :root_loged
     else
       respond_to { |format|
         format.html
@@ -13,7 +13,7 @@ class LoginController < ApplicationController
     if session[:user] = User.authenticate(params[:username], params[:password])
       redirect_to :controller => "users", :action => "index"
     else
-      flash[:message] = "Login failed!"
+      flash[:message] = "Enter valid credentials!"
       redirect_to :action => "index"
     end
   end

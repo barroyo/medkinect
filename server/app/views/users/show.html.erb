@@ -17,7 +17,7 @@
 
 <p>
   <b>Status:</b>
-  <%= @user.status %>
+  <%= @user.status == "en" ?  "Enabled" : "Disabled" %>
 </p>
 <p>
   <b>Role:</b>
