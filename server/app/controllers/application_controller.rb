@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 	respond_to :json,:xml,:html
 	
 	
-	before_filter :authenticate
+	#before_filter :authenticate
 	
   def authenticate
     authenticate_or_request_with_http_basic do |username, apitoken|
