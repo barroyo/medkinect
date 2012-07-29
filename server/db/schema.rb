@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120607003646) do
+ActiveRecord::Schema.define(:version => 20120702233855) do
+
+  create_table "api_keys", :force => true do |t|
+    t.string   "access_token"
+    t.string   "version_api"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "patients", :force => true do |t|
     t.string   "firstname"
@@ -20,8 +27,15 @@ ActiveRecord::Schema.define(:version => 20120607003646) do
     t.date     "birthdate"
     t.integer  "blood_id"
     t.string   "historical_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "sex"
+    t.string   "marital_status"
+    t.text     "address"
+    t.text     "mobile"
+    t.text     "phone"
+    t.text     "weight"
+    t.text     "height"
   end
 
   create_table "roles", :force => true do |t|

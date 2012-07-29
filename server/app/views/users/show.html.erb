@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
-
-<p>
   <b>Email:</b>
   <%= @user.email %>
 </p>
@@ -22,7 +17,7 @@
 
 <p>
   <b>Status:</b>
-  <%= @user.status %>
+  <%= @user.status == "en" ?  "Enabled" : "Disabled" %>
 </p>
 <p>
   <b>Role:</b>

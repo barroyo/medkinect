@@ -1,4 +1,33 @@
 Server::Application.routes.draw do
+
+  require 'api_constraints'
+
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :users
+      resources :roles
+      resources :specialisms
+      resources :users do
+        resources :roles
+      end
+      resources :sicks
+      resources :patients
+
+      put '/users' => 'users#update'
+      post 'users' => 'users#new'
+    end
+  #future API V2, for request into header; 'Accept: application/vnd.medkinect.v2'
+  #scope module: :v2, constraints: ApiConstraints.new(version: 2) do
+  #  resources :users
+  #end
+  end
+
+  root :to => 'login#index'
+  get "login", :to => "login#index"
+  get "login/index"
+  post "login/login"
+  get "login/logout"
+
   resources :sicks
 
   resources :patients
@@ -8,18 +37,17 @@ Server::Application.routes.draw do
   resources :users do
     resources :roles
   end
-	
-	
-	post 'users' => 'users#new'
-	 
-	put '/users' => 'users#update'
-	
-	put '/user/:id' => 'users#update'
-	
-  #match 'users/:id/rol' => 'roles#show'
-  
 
-	# The priority is based upon order of creation:
+  post 'users/login' , :defaults => { :format => 'json' }
+  post 'users' => 'users#new'
+
+  put '/users' => 'users#update'
+
+  put '/user/:id' => 'users#update'
+
+  #match 'users/:id/rol' => 'roles#show'
+
+  # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
@@ -68,11 +96,11 @@ Server::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  #root :to => 'login#index'
+  #get "users", :as => :root_loged
+# See how all your routes lay out with "rake routes"
 
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+# This is a legacy wild controller route that's not recommended for RESTful applications.
+# Note: This route will make all actions in every controller accessible via GET requests.
+# match ':controller(/:action(/:id))(.:format)'
 end

@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
+    <%= f.text_field :firstname, :placeholder => 'first name'%>
   </div>
   <div class="field">
     <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
+    <%= f.text_field :lastname, :placeholder => 'last name' %>
   </div>
   <div class="field">
-    <%= f.label :dni %><br />
-    <%= f.text_field :dni %>
+    <%= f.label :dni.upcase %><br />
+    <%= f.text_field :dni, :placeholder => 'DNI' %>
   </div>
   <div class="field">
     <%= f.label :birthdate %><br />
@@ -32,8 +32,24 @@
     <%= f.text_field :blood_id %>
   </div>
   <div class="field">
-    <%= f.label :historical_id %><br />
-    <%= f.text_field :historical_id %>
+    <%= f.label :mobile %><br />
+    <%= f.text_field :mobile, :placeholder => 'mobile phone' %>
+  </div>
+  <div class="field">
+    <%= f.label :phone%><br />
+    <%= f.text_field :phone, :placeholder => 'Home phone' %>
+  </div>
+  <div class="field">
+    <%= f.label :sex %><br />
+    <%= f.select :sex,  {"Male" => "male", "Female" => "female", "No spesified" => "ns"}, :selected => @patient.sex %>
+  </div>
+  <div class="field">
+    <%= f.label :marital_status %><br />
+    <%= f.select :marital_status,  {"Maried" => "maried", "Single" => "single", "No spesified" => "ns"}, :selected => @patient.sex %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address, :placeholder => 'Address' %>
   </div>
   <div class="actions">
     <%= f.submit %>

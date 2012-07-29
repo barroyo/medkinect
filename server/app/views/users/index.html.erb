@@ -1,31 +1,22 @@
 <h1>Listing users</h1>
-
+<a class="button" href="users/new"><span>Add new user</span></a>
 <table>
   <tr>
-    <th>Username</th>
-    <th>Password</th>
-    <th>Email</th>
-    <th>Fullname</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th scope="col">Username</th>
+    <th scope="col">Email</th>
+    <th  scope="col">Fullname</th>
+    <th  scope="col">Status</th>
+    <th scope="col">Actions</td>
   </tr>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.username %></td>
-    <td><%= user.password %></td>
+<% @users.each_with_index do |user, index| %>
+  <tr class="<%=  index%2 == 0 ? 'even' : 'odd' %>">
+    <td class="spec"><%= user.username %></td>
     <td><%= user.email %></td>
     <td><%= user.fullname %></td>
-    <td><%= user.status %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= user.status == "en" ?  "Enabled" : "Disabled" %></td>
+    <td><%= link_to 'Show', user %> <%= link_to 'Edit', edit_user_path(user) %> <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New User', new_user_path %>
