@@ -44,7 +44,7 @@
 				<a href="#" id="add-row" class="arrow">add >></a>
 			</td>
 			<td>
-				<%= select_tag "specialism",options_from_collection_for_select(@user.specialisms,"id", "title"), :multiple=>true, :size => 8, :id => "select2",:class=>"select-box" %><br>
+				<%= select_tag "specialisms",options_from_collection_for_select(@user.specialisms,"id", "title"), :multiple=>true, :size => 8, :id => "select2",:class=>"select-box" %><br>
 				<a href="#" id="remove-row" class="arrow"><< remove</a>
 			</td>
 		</tr>

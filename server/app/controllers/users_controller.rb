@@ -3,29 +3,27 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    respond_with(@users)
+    respond_to { |format|
+      format.html
+      format.json { render :json => @users.to_json(:include => :specialisms) }
+    }
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @user= User.find(:all, :joins => " inner join specialismships sp on users.id=sp.user_id", :conditions => ["users.id =? and sp.updated_at >= ?", params[:id],'2012-05-05T04:02:16Z'],:include=>:specialismships,:group => :id)
-    respond_to do |format|
-        format.json { render json: @user.to_json(:include=>[:specialismships]) }
-    end
-    
-    
-   # @user = User.find(params[:id])
-    #@user.role = Role.find(@user.role_id)
-	#  @user.specialismships.collect { |a| a.specialism }
-    #respond_with(@user)
+    @user = User.find(params[:id])
+    respond_to { |format|
+      format.html
+      format.json { render :json => @user.to_json(:include => [:specialisms,:role]) }
+    }
   end
 
   # GET /users/new
   # GET /users/new.json
   def new
     @user = User.new
-
+    @specialismslist = Specialism.find(:all)
     respond_with(@user)
   end
 
@@ -63,10 +61,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.specialisms.destroy_all
 	
-	@specialityes = params[:specialism]
+	 @specialityes = params[:specialisms]
 	
-	if !@specialityes.empty?
-		@specialityes.each do |id| 
+	if !@specialityes.nil?
+		  @specialityes.each do |id| 
 			Specialismship.new({:specialism_id => id, :user_id => @user.id}).save
 		end
 	end

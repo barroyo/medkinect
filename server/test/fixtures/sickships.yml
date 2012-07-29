@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  patient_id: 1
+  sick_id: 1
+  diagnostic_date: 2012-06-06 18:36:18
+
+two:
+  patient_id: 1
+  sick_id: 1
+  diagnostic_date: 2012-06-06 18:36:18
