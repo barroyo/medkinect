@@ -9,10 +9,16 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
-    @user.role = Role.find(@user.role_id)
-	@user.specialismships.collect { |a| a.specialism }
-    respond_with(@user)
+    @user= User.find(:all, :joins => " inner join specialismships sp on users.id=sp.user_id", :conditions => ["users.id =? and sp.updated_at >= ?", params[:id],'2012-05-05T04:02:16Z'],:include=>:specialismships,:group => :id)
+    respond_to do |format|
+        format.json { render json: @user.to_json(:include=>[:specialismships]) }
+    end
+    
+    
+   # @user = User.find(params[:id])
+    #@user.role = Role.find(@user.role_id)
+	#  @user.specialismships.collect { |a| a.specialism }
+    #respond_with(@user)
   end
 
   # GET /users/new
