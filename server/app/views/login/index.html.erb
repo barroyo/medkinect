@@ -1,0 +1,18 @@
+<table class="nifty_form">
+<%= form_tag("login/login",:method => "post", :class => "nifty_form") do  %>
+	<tr>
+		<td colspan="2"><h3>Login Into Your Medkinect Account</h3></td>
+	<tr>
+	<td><%= label_tag(:username,"Username:")%></td>
+	<td><%= tag(:input,{:type => "text", :placeholder =>"Username",:class => "require nospecialchars",:id=>"username_input",:maxlength => "20", :name => "username"})%></td>
+	</tr>
+	<tr>
+	<td><%= label_tag(:password,"Password:")  %></td>
+	<td><%= tag(:input,{:type => "password", :placeholder =>"password", :class => "require nospecialchars", :id =>"password_input",:maxlength => "20", :name => "password"}) %></td>
+	</tr>
+	<tr>
+	<td><%= submit_tag('Login')%></td>
+	<td><span class="error"><%= flash[:message] %></span></td>
+	</tr>
+<% end %>
+</table>

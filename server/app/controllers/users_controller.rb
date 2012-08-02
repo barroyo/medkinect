@@ -19,6 +19,13 @@ class UsersController < ApplicationController
     }
   end
 
+  def login
+    @user = User.authenticate(params[:username],params[:password])
+    respond_to { |format|
+      format.json { render :json => @user.to_json(:include => [:specialisms,:role]) }
+    }
+  end
+
   # GET /users/new
   # GET /users/new.json
   def new
@@ -30,20 +37,20 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-	@user.specialismships.collect { |a| a.specialism }
-	# all especialisms where not in user.specialisms :D yeah toper rocks \m/
-	if @user.specialisms.size > 0
-		@specialismslist = Specialism.find(:all, :conditions => ['id not in (?)', @user.specialisms.map(&:id)])
-	else
-		@specialismslist = Specialism.find(:all)
-	end
+    @user.specialismships.collect { |a| a.specialism }
+    # all especialisms where not in user.specialisms :D yeah toper rocks \m/
+    if @user.specialisms.size > 0
+      @specialismslist = Specialism.find(:all, :conditions => ['id not in (?)', @user.specialisms.map(&:id)])
+    else
+      @specialismslist = Specialism.find(:all)
+    end
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(params[:user])
-	
+    @user.password = Digest::MD5.hexdigest(@user.password)
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -60,15 +67,15 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.specialisms.destroy_all
-	
-	 @specialityes = params[:specialisms]
-	
-	if !@specialityes.nil?
-		  @specialityes.each do |id| 
-			Specialismship.new({:specialism_id => id, :user_id => @user.id}).save
-		end
-	end
-	
+
+    @specialityes = params[:specialisms]
+
+    if !@specialityes.nil?
+      @specialityes.each do |id|
+        Specialismship.new({:specialism_id => id, :user_id => @user.id}).save
+      end
+    end
+
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice:  @specialityes}
@@ -91,5 +98,5 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 end
