@@ -1,4 +1,4 @@
-<%= form_for(@patient) do |f| %>
+<%= form_for(@patient, :validate => true) do |f| %>
   <% if @patient.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
@@ -20,7 +20,7 @@
     <%= f.text_field :lastname, :placeholder => 'last name' %>
   </div>
   <div class="field">
-    <%= f.label :dni.upcase %><br />
+    <%= f.label :dni %><br />
     <%= f.text_field :dni, :placeholder => 'DNI' %>
   </div>
   <div class="field">
