@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @calendars = Calendar.where("user_id = ?", params[:id])
     respond_to { |format|
       format.html
       format.json { render :json => @user.to_json(:include => [:specialisms,:role]) }

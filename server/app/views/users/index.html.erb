@@ -1,5 +1,5 @@
 <h1>Listing users</h1>
-<a class="button" href="users/new"><span>Add new user</span></a>
+<a class="nicebutton" href="users/new"><span>Add new user</span></a>
 <table>
   <tr>
     <th scope="col">Username</th>
@@ -15,7 +15,7 @@
     <td><%= user.email %></td>
     <td><%= user.fullname %></td>
     <td><%= user.status == "en" ?  "Enabled" : "Disabled" %></td>
-    <td><%= link_to 'Show', user %> <%= link_to 'Edit', edit_user_path(user) %> <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', user, :class => "nicebutton" %> <%= link_to 'Edit', edit_user_path(user), :class=>"greybutton" %> <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete, :class => "redbutton" %></td>
   </tr>
 <% end %>
 </table>

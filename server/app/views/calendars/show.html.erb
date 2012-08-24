@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= link_to @calendar.user.fullname, @calendar.user  %>
+</p>
+
+<p>
+  <b>Patient:</b>
+  <%= link_to @calendar.patient.fullname, @calendar.patient  %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @calendar.date %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @calendar.date_type %>
+</p>
+
+<p>
+  <b>Retult:</b>
+  <%= @calendar.retult %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @calendar.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
+<%= link_to 'Back', calendars_path %>

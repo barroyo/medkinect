@@ -1,0 +1,23 @@
+<h1>Listing calendars</h1>
+
+<table>
+  <tr>
+    <th>Patient</th>
+    <th>Date</th>
+    <th>Type</th>
+    <th>Action</td>
+  </tr>
+
+<% @calendars.each do |calendar| %>
+  <tr>
+    <td><%= calendar.patient.fullname %></td>
+    <td><%= calendar.date %></td>
+    <td><%= calendar.date_type %></td>
+    <td><%= link_to 'Show', calendar %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Calendar', new_calendar_path %>

@@ -15,7 +15,7 @@
 //= require_tree .
 
 $(document).ready(function() {
-
+	$("div#tabs").tabs();
 	$('#add-row').click(function() {
 		return !$('#select1 option:selected').remove().appendTo('#select2');
 	});
@@ -34,5 +34,5 @@ $(document).ready(function() {
 		$('ul', this).slideUp(100);
 	});
 
-});
 
+});

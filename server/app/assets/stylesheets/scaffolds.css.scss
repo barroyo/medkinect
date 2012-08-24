@@ -1,4 +1,9 @@
-
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -10,13 +15,7 @@ pre {
   padding: 10px;
   font-size: 11px; }
 
-a {
-  color: #000;
-  &:visited {
-    color: #666; }
-  &:hover {
-    color: #fff;
-    background-color: #000; } }
+
 
 div {
   &.field, &.actions {
@@ -25,12 +24,10 @@ div {
 #notice {
   color: green; }
 
-.field_with_errors {
-  padding: 2px;
-  display: table; 
-  color: red;
-  font-weight: bold;
-  }
+.field_with_errors label {
+font-weight: bold;
+color: red;
+}
 
 #error_explanation {
   width: 450px;

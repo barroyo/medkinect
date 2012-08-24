@@ -11,13 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702233855) do
+ActiveRecord::Schema.define(:version => 20120807004916) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
     t.string   "version_api"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "calendars", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "patient_id"
+    t.date     "date"
+    t.string   "date_type"
+    t.text     "retult"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "historical_scores", :force => true do |t|
+    t.integer  "symbol_id",                                                                           :null => false
+    t.decimal  "previous_close",                      :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "bid_real_time",                       :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "open",                                :precision => 10, :scale => 2, :default => 0.0
+    t.decimal  "ask_real_time",                       :precision => 10, :scale => 2, :default => 0.0
+    t.float    "one_yr_target_price",                                                :default => 0.0
+    t.string   "day_range",             :limit => 30
+    t.string   "fifty_two_week_range",  :limit => 30
+    t.integer  "volume",                                                             :default => 0
+    t.integer  "average_daily_volume",                                               :default => 0
+    t.string   "market_capitalization", :limit => 15
+    t.string   "related_symbols",       :limit => 50
+    t.datetime "storage_date"
   end
 
   create_table "patients", :force => true do |t|
@@ -48,6 +75,23 @@ ActiveRecord::Schema.define(:version => 20120702233855) do
     t.integer  "user_id"
   end
 
+  create_table "scores", :force => true do |t|
+    t.integer "symbol_id",                                                                           :null => false
+    t.decimal "previous_close",                      :precision => 10, :scale => 2, :default => 0.0
+    t.decimal "bid_real_time",                       :precision => 10, :scale => 2, :default => 0.0
+    t.decimal "open",                                :precision => 10, :scale => 2, :default => 0.0
+    t.decimal "ask_real_time",                       :precision => 10, :scale => 2, :default => 0.0
+    t.float   "one_yr_target_price",                                                :default => 0.0
+    t.string  "day_range",             :limit => 30
+    t.string  "fifty_two_week_range",  :limit => 30
+    t.integer "volume",                                                             :default => 0
+    t.integer "average_daily_volume",                                               :default => 0
+    t.string  "market_capitalization", :limit => 15
+    t.string  "related_symbols",       :limit => 50
+  end
+
+  add_index "scores", ["symbol_id"], :name => "fk_symbol"
+
   create_table "sicks", :force => true do |t|
     t.string   "title"
     t.string   "description"
@@ -76,6 +120,17 @@ ActiveRecord::Schema.define(:version => 20120702233855) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "stock_symbols", :force => true do |t|
+    t.string   "symbol",            :limit => 5, :null => false
+    t.string   "processing_host",   :limit => 5
+    t.datetime "last_process_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stock_symbols", ["processing_host", "last_process_date"], :name => "symbol_lock"
+  add_index "stock_symbols", ["symbol"], :name => "symbol_UNIQUE", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username"

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  patient_id: 1
+  date: 2012-08-06
+  type: 
+  retult: MyText
+  status: MyString
+
+two:
+  user_id: 1
+  patient_id: 1
+  date: 2012-08-06
+  type: 
+  retult: MyText
+  status: MyString

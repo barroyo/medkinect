@@ -8,9 +8,7 @@
     <th>Birthdate</th>
     <th>Blood</th>
     <th>Historical</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>
   </tr>
 
 <% @patients.each do |patient| %>
@@ -21,9 +19,9 @@
     <td><%= patient.birthdate %></td>
     <td><%= patient.blood_id %></td>
     <td><%= patient.historical_id %></td>
-    <td><%= link_to 'Show', patient %></td>
-    <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-    <td><%= link_to 'Destroy', patient, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', patient, :class=>"nicebutton" %>
+    <%= link_to 'Edit', edit_patient_path(patient), :class=>"greybutton" %>
+    <%= link_to 'Destroy', patient, confirm: 'Are you sure?', method: :delete, :class=>"redbutton" %></td>
   </tr>
 <% end %>
 </table>

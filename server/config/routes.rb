@@ -1,5 +1,9 @@
 Server::Application.routes.draw do
 
+  resources :calendars
+
+  match 'dates', :to => 'calendars#index'
+
   require 'api_constraints'
 
   namespace :api, defaults: {format: 'json'} do
@@ -42,6 +46,10 @@ Server::Application.routes.draw do
   post 'users' => 'users#new'
 
   put '/users' => 'users#update'
+
+  match  'users/:user_id/dates', :to => 'calendars#show_user_dates'
+
+  match   'users/:user_id/dates/new', :to => 'calendars#new'
 
   put '/user/:id' => 'users#update'
 

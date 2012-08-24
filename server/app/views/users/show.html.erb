@@ -1,37 +1,47 @@
-<p id="notice"><%= notice %></p>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Details</a></li>
+    <li><a href="#tabs-2">Dates</a></li>
+  </ul>
+  <div id="tabs-1">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
-</p>
+    <p>
+      <b>Username:</b>
+      <%= @user.username %>
+    </p>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+    <p>
+      <b>Email:</b>
+      <%= @user.email %>
+    </p>
 
-<p>
-  <b>Fullname:</b>
-  <%= @user.fullname %>
-</p>
+    <p>
+      <b>Fullname:</b>
+      <%= @user.fullname %>
+    </p>
 
-<p>
-  <b>Status:</b>
-  <%= @user.status == "en" ?  "Enabled" : "Disabled" %>
-</p>
-<p>
-  <b>Role:</b>
-  <%= @user.role.title %>
-</p>
-<% if @user.specialisms.size > 0 %>
-<p>
-  <b>Specialisms: </b>
-  <% @user.specialisms.each do |special| %>
-	<%= special.title%>
-	<%end%>
-</p>
-<% end %>
-
+    <p>
+      <b>Status:</b>
+      <%= @user.status == "en" ?  "Enabled" : "Disabled" %>
+    </p>
+    <p>
+      <b>Role:</b>
+      <%= @user.role.title %>
+    </p>
+    <% if @user.specialisms.size > 0 %>
+    <p>
+      <b>Specialisms: </b>
+      <% @user.specialisms.each do |special| %>
+      <%= special.title%>
+      <%end%>
+    </p>
+    <% end %>
+  </div>
+  <div id="tabs-2">
+    <%= render :template => 'calendars/show_user_dates' %>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
