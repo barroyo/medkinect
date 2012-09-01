@@ -3,7 +3,7 @@ class CreateCalendars < ActiveRecord::Migration
     create_table :calendars do |t|
       t.integer :user_id
       t.integer :patient_id
-      t.date :datetime
+      t.date :date
       t.string :date_type
       t.text :result
       t.string :status

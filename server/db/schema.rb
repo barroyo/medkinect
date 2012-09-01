@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20120807004916) do
     t.integer  "patient_id"
     t.date     "date"
     t.string   "date_type"
-    t.text     "retult"
+    t.text     "result"
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
