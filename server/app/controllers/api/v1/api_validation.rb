@@ -1,5 +1,5 @@
 class token_restrict
-  before_filter :restrict_access
+  #before_filter :restrict_access
   
   private
   
