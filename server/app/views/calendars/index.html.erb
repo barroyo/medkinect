@@ -14,8 +14,8 @@
 
 <% @calendars.each do |calendar| %>
   <tr>
-    <td><%= calendar.user_id %></td>
-    <td><%= calendar.patient_id %></td>
+    <td><%= calendar.user.fullname %></td>
+    <td><%= calendar.patient.fullname %></td>
     <td><%= calendar.date %></td>
     <td><%= calendar.date_type %></td>
     <td><%= calendar.result %></td>
