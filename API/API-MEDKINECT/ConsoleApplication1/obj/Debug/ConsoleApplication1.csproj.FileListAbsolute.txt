@@ -1,0 +1,9 @@
+C:\Users\Pablo Arroyo B\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Pablo Arroyo B\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Pablo Arroyo B\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Pablo Arroyo B\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\API-MEDKINECT.dll
+C:\Users\Pablo Arroyo B\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\API-MEDKINECT.pdb
+C:\Users\Pablo Arroyo B\medkinect\API\API-MEDKINECT\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Pablo Arroyo B\medkinect\API\API-MEDKINECT\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\Pablo Arroyo B\medkinect\API\API-MEDKINECT\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\Pablo Arroyo B\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\Newtonsoft.Json.dll
