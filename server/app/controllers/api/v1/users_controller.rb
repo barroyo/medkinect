@@ -21,6 +21,12 @@ module Api
       end
 
       def login
+        if params[:username].nil? || params[:password].nil?
+          respond_to { |format|
+            format.json { render :json => {:error => ["Invalid Information"]} }
+          }
+          return
+        end
         @user = User.authenticate(params[:username],params[:password])
         respond_to { |format|
           format.json { render :json => @user.to_json(:include => [:specialisms,:role]) }
