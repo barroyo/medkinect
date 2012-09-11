@@ -1,9 +1,9 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      #before_filter :restrict_access
+      before_filter :restrict_access
+
       # GET /users
-      # GET /users.json
       def index
         @users = User.all
         respond_to { |format|
@@ -12,9 +12,8 @@ module Api
       end
 
       # GET /users/1
-      # GET /users/1.json
       def show
-        @user = User.find(params[:id])
+        @user = User.find(params[:user_id])
         respond_to { |format|
           format.json { render :json => @user.to_json(:include => [:specialisms,:role]) }
         }
@@ -29,84 +28,64 @@ module Api
         end
         @user = User.authenticate(params[:username],params[:password])
         respond_to { |format|
-          format.json { render :json => @user.to_json(:include => [:specialisms,:role]) }
+          if !@user.nil?
+            format.json { render :json => @user.to_json(:include => [:specialisms,:role]) }
+          else
+            format.json { render :json => {:errors => [:invalid => true]} }
+          end
         }
       end
 
-      # GET /users/new
-      # GET /users/new.json
-      def new
-        @user = User.new
-        @specialismslist = Specialism.find(:all)
-        respond_with(@user)
-      end
-
-      # GET /users/1/edit
-      def edit
-        @user = User.find(params[:id])
-        @user.specialismships.collect { |a| a.specialism }
-        # all especialisms where not in user.specialisms :D yeah toper rocks \m/
-        if @user.specialisms.size > 0
-          @specialismslist = Specialism.find(:all, :conditions => ['id not in (?)', @user.specialisms.map(&:id)])
-        else
-          @specialismslist = Specialism.find(:all)
-        end
-      end
-
-      # POST /users
-      # POST /users.json
+      # POST /users/new
       def create
         @user = User.new(params[:user])
         @user.password = Digest::MD5.hexdigest(@user.password)
         respond_to do |format|
           if @user.save
-            format.html { redirect_to @user, notice: 'User was successfully created.' }
             format.json { render json: @user, status: :created, location: @user }
           else
-            format.html { render action: "new" }
-            format.json { render json: @user.errors, status: :unprocessable_entity }
+            format.json { render json: {:errors => @user.errors}, status: :unprocessable_entity }
           end
         end
       end
 
-      # PUT /users/1
-      # PUT /users/1.json
+
+      # POST /users/1/update
       def update
-        @user = User.find(params[:id])
+        @user = User.find(params[:user_id])
         @user.specialisms.destroy_all
+        if !params[:specialisms].nil?
 
-        @specialityes = params[:specialisms]
-
-        if !@specialityes.nil?
-          @specialityes.each do |id|
-            Specialismship.new({:specialism_id => id, :user_id => @user.id}).save
+          params[:specialisms].each do |sp|
+             speciality = @user.specialismships.new()
+             speciality.specialism_id = sp[:id]
+             speciality.save
           end
-        end
 
+        end
+        @user.email = params[:email]
+        @user.fullname = params[:fullname]
+        @user.role_id = params[:role_id] if !params[:role_id].nil?
         respond_to do |format|
-          if @user.update_attributes(params[:user])
-            format.html { redirect_to @user, notice:  @specialityes}
-            format.json { head :no_content }
+          if @user.save()
+            format.json { render json: {:updated => true}  }
           else
-            format.html { render action: "edit" }
-            format.json { render json: @user.errors, status: :unprocessable_entity }
+            format.json { render json: {:errors => @user.errors}, status: :unprocessable_entity }
           end
         end
       end
 
-      # DELETE /users/1
-      # DELETE /users/1.json
+
+      # POST /users/1/delete
       def destroy
-        @user = User.find(params[:id])
+        @user = User.find(params[:user_id])
         @user.destroy
 
         respond_to do |format|
-          format.html { redirect_to users_url }
-          format.json { head :no_content }
+          format.json { render json: {:deleted => true} }
         end
       end
   
-        
     end
     
   end

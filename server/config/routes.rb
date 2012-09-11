@@ -9,8 +9,15 @@ Server::Application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       
-      match "users/login", :to => "users#login"
-      resources :users
+      post "users/login", :to => "users#login"
+      get "users", :to => "users#index", :defaults => { :format => 'json' }
+      get "users/:user_id", :to => "users#show", :defaults => { :format => 'json' }
+      post "users/:user_id/update", :to => "users#update", :defaults => { :format => 'json' }
+      post "users/:user_id/delete", :to => "users#destroy", :defaults => { :format => 'json' }
+      post "users/new", :to => "users#create", :defaults => { :format => 'json' }
+
+
+
       resources :roles
       resources :specialisms
       resources :users do
@@ -19,8 +26,6 @@ Server::Application.routes.draw do
       resources :sicks
       resources :patients
 
-      put '/users' => 'users#update'
-      post 'users' => 'users#new'
     end
   #future API V2, for request into header; 'Accept: application/vnd.medkinect.v2'
   #scope module: :v2, constraints: ApiConstraints.new(version: 2) do
