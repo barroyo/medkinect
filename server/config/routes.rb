@@ -9,12 +9,14 @@ Server::Application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       
-      match "users/login", :to => "users#login"
+      post "users/login", :to => "users#login"
       get "users", :to => "users#index", :defaults => { :format => 'json' }
       get "users/:user_id", :to => "users#show", :defaults => { :format => 'json' }
       post "users/:user_id/update", :to => "users#update", :defaults => { :format => 'json' }
       post "users/:user_id/delete", :to => "users#destroy", :defaults => { :format => 'json' }
       post "users/new", :to => "users#create", :defaults => { :format => 'json' }
+
+
 
       resources :roles
       resources :specialisms

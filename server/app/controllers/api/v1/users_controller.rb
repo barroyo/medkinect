@@ -28,7 +28,11 @@ module Api
         end
         @user = User.authenticate(params[:username],params[:password])
         respond_to { |format|
-          format.json { render :json => @user.to_json(:include => [:specialisms,:role]) }
+          if !@user.nil?
+            format.json { render :json => @user.to_json(:include => [:specialisms,:role]) }
+          else
+            format.json { render :json => {:errors => [:invalid => true]} }
+          end
         }
       end
 
