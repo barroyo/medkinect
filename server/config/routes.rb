@@ -5,10 +5,11 @@ Server::Application.routes.draw do
   match 'dates', :to => 'calendars#index'
 
   require 'api_constraints'
-
+  # custom API routes maping
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       
+      #users controller
       post "users/login", :to => "users#login"
       get "users", :to => "users#index", :defaults => { :format => 'json' }
       get "users/:user_id", :to => "users#show", :defaults => { :format => 'json' }
@@ -16,15 +17,39 @@ Server::Application.routes.draw do
       post "users/:user_id/delete", :to => "users#destroy", :defaults => { :format => 'json' }
       post "users/new", :to => "users#create", :defaults => { :format => 'json' }
 
+      #roles controller
+      get "roles", :to => "roles#index", :defaults => { :format => 'json' }
+      get "roles/:role_id", :to => "roles#show", :defaults => { :format => 'json' }
+      post "roles/:role_id/update", :to => "roles#update", :defaults => { :format => 'json' }
+      post "roles/:role_id/delete", :to => "roles#destroy", :defaults => { :format => 'json' }
+      post "roles/new", :to => "roles#create", :defaults => { :format => 'json' }
+
+      #patients controller
+      get "patients", :to => "patients#index", :defaults => { :format => 'json' }
+      get "patients/:patient_id", :to => "patients#show", :defaults => { :format => 'json' }
+      post "patients/:patient_id/update", :to => "patients#update", :defaults => { :format => 'json' }
+      post "patients/:patient_id/delete", :to => "patients#destroy", :defaults => { :format => 'json' }
+      post "patients/new", :to => "patients#create", :defaults => { :format => 'json' }
+
+      #sicks controller
+      get "sicks", :to => "sicks#index", :defaults => { :format => 'json' }
+      get "sicks/:sick_id", :to => "sicks#show", :defaults => { :format => 'json' }
+      post "sicks/:sick_id/update", :to => "sicks#update", :defaults => { :format => 'json' }
+      post "sicks/:sick_id/delete", :to => "sicks#destroy", :defaults => { :format => 'json' }
+      post "sicks/new", :to => "sicks#create", :defaults => { :format => 'json' }
 
 
-      resources :roles
+      #sicks controller
+      get "specialisms", :to => "specialisms#index", :defaults => { :format => 'json' }
+      get "specialisms/:specialism_id", :to => "specialisms#show", :defaults => { :format => 'json' }
+      post "specialisms/:specialism_id/update", :to => "specialisms#update", :defaults => { :format => 'json' }
+      post "specialisms/:specialism_id/delete", :to => "specialisms#destroy", :defaults => { :format => 'json' }
+      post "specialisms/new", :to => "specialisms#create", :defaults => { :format => 'json' }
+
+
+
+
       resources :specialisms
-      resources :users do
-        resources :roles
-      end
-      resources :sicks
-      resources :patients
 
     end
   #future API V2, for request into header; 'Accept: application/vnd.medkinect.v2'
