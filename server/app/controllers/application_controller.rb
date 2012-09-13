@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   respond_to :json,:xml,:html
   ##add login method
    
-  private
   
   # def restrict_access
   #   api_key = ApiKey.find_by_access_token(params[:access_token])

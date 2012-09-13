@@ -1,30 +1,65 @@
 Server::Application.routes.draw do
 
+  get 'home', :to => 'home#index'
+  get 'twitter', :to => 'twitter#index'
+  get "twitter/index"
+
+  get "twitter/post"
+
   resources :calendars
 
   match 'dates', :to => 'calendars#index'
 
   require 'api_constraints'
-
+  # custom API routes maping
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       
+      #users controller
       post "users/login", :to => "users#login"
       get "users", :to => "users#index", :defaults => { :format => 'json' }
       get "users/:user_id", :to => "users#show", :defaults => { :format => 'json' }
       post "users/:user_id/update", :to => "users#update", :defaults => { :format => 'json' }
+      post "users/:user_id/change_password", :to => "users#change_password", :defaults => { :format => 'json' }
       post "users/:user_id/delete", :to => "users#destroy", :defaults => { :format => 'json' }
       post "users/new", :to => "users#create", :defaults => { :format => 'json' }
 
+      #roles controller
+      get "roles", :to => "roles#index", :defaults => { :format => 'json' }
+      get "roles/:role_id", :to => "roles#show", :defaults => { :format => 'json' }
+      post "roles/:role_id/update", :to => "roles#update", :defaults => { :format => 'json' }
+      post "roles/:role_id/delete", :to => "roles#destroy", :defaults => { :format => 'json' }
+      post "roles/new", :to => "roles#create", :defaults => { :format => 'json' }
+
+      #patients controller
+      get "patients", :to => "patients#index", :defaults => { :format => 'json' }
+      get "patients/:patient_id", :to => "patients#show", :defaults => { :format => 'json' }
+      post "patients/:patient_id/update", :to => "patients#update", :defaults => { :format => 'json' }
+      post "patients/:patient_id/delete", :to => "patients#destroy", :defaults => { :format => 'json' }
+      post "patients/new", :to => "patients#create", :defaults => { :format => 'json' }
+
+      #sicks controller
+      get "sicks", :to => "sicks#index", :defaults => { :format => 'json' }
+      get "sicks/:sick_id", :to => "sicks#show", :defaults => { :format => 'json' }
+      post "sicks/:sick_id/update", :to => "sicks#update", :defaults => { :format => 'json' }
+      post "sicks/:sick_id/delete", :to => "sicks#destroy", :defaults => { :format => 'json' }
+      post "sicks/new", :to => "sicks#create", :defaults => { :format => 'json' }
 
 
-      resources :roles
-      resources :specialisms
-      resources :users do
-        resources :roles
-      end
-      resources :sicks
-      resources :patients
+      #sicks controller
+      get "specialisms", :to => "specialisms#index", :defaults => { :format => 'json' }
+      get "specialisms/:specialism_id", :to => "specialisms#show", :defaults => { :format => 'json' }
+      post "specialisms/:specialism_id/update", :to => "specialisms#update", :defaults => { :format => 'json' }
+      post "specialisms/:specialism_id/delete", :to => "specialisms#destroy", :defaults => { :format => 'json' }
+      post "specialisms/new", :to => "specialisms#create", :defaults => { :format => 'json' }
+
+      #calendars controller
+      get "calendars", :to => "calendars#index", :defaults => { :format => 'json' }
+      get "calendars/:calendar_id", :to => "calendars#show", :defaults => { :format => 'json' }
+      get "calendars/user/:user_id", :to => "calendars#show_user_dates", :defaults => { :format => 'json' }
+      post "calendars/:calendar_id/update", :to => "calendars#update", :defaults => { :format => 'json' }
+      post "calendars/:calendar_id/delete", :to => "calendars#destroy", :defaults => { :format => 'json' }
+      post "calendars/new", :to => "calendars#create", :defaults => { :format => 'json' }
 
     end
   #future API V2, for request into header; 'Accept: application/vnd.medkinect.v2'
@@ -32,6 +67,7 @@ Server::Application.routes.draw do
   #  resources :users
   #end
   end
+
 
   root :to => 'login#index'
   get "login", :to => "login#index"
@@ -49,6 +85,7 @@ Server::Application.routes.draw do
     resources :roles
   end
 
+  get 'users', :to =>  'users#index', :as => :root_loged
   post 'users/login' , :defaults => { :format => 'json' }
   post 'users' => 'users#new'
 

@@ -12,6 +12,7 @@
 			<div class="entry_page">
 				<div id="header">
 					<div id="menu">
+						<% if !session[:user].nil? %>
 						<ul id="nav">
 							<li class="top">
 								<a href="#nogo1" class="top_link"><span>Home</span></a>
@@ -41,6 +42,9 @@
 								</ul>
 							</li>
 						</ul>
+						<% else %>
+						<span>Medkinect</span>
+						<% end %>
 					</div>
 				</div>
 				<div  class="middle">

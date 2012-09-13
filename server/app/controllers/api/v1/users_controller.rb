@@ -49,6 +49,28 @@ module Api
         end
       end
 
+       # POST /users/id/change_password
+      def change_password
+        if params[:username].nil? || params[:password].nil? || params[:new_password].nil?
+          respond_to do |format|
+            format.json { render :json => {:error => ["Invalid Information"]} }
+          end
+          return
+        end
+        @user = User.authenticate(params[:username],params[:password])
+        respond_to do |format|
+          if !@user.nil?
+            @user.password = Digest::MD5.hexdigest(params[:new_password])
+            if @user.save
+              format.json { render :json => {:updated => true} }
+            else
+              format.json { render :json => {:errors => @user.errors} }
+            end
+          else
+            format.json { render :json => {:errors => [:invalid => true]} }
+          end
+        end
+      end
 
       # POST /users/1/update
       def update

@@ -11,7 +11,9 @@
  *= require_self
  *= require_tree .
  */
-
+body {
+	background-color: #E7FBFC !important;
+}
 a.arrow {
 	display: block;
 	border: 1px solid #aaa;
