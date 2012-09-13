@@ -14,6 +14,7 @@ Server::Application.routes.draw do
       get "users", :to => "users#index", :defaults => { :format => 'json' }
       get "users/:user_id", :to => "users#show", :defaults => { :format => 'json' }
       post "users/:user_id/update", :to => "users#update", :defaults => { :format => 'json' }
+      post "users/:user_id/change_password", :to => "users#change_password", :defaults => { :format => 'json' }
       post "users/:user_id/delete", :to => "users#destroy", :defaults => { :format => 'json' }
       post "users/new", :to => "users#create", :defaults => { :format => 'json' }
 
@@ -46,10 +47,6 @@ Server::Application.routes.draw do
       post "specialisms/:specialism_id/delete", :to => "specialisms#destroy", :defaults => { :format => 'json' }
       post "specialisms/new", :to => "specialisms#create", :defaults => { :format => 'json' }
 
-
-
-
-      resources :specialisms
 
     end
   #future API V2, for request into header; 'Accept: application/vnd.medkinect.v2'
