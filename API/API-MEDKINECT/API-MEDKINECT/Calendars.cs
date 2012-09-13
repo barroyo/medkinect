@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace API_MEDKINECT
 {
-     public  class Calendars
+     public  class Calendars : ApiMedkinect
         {
-            ApiMedkinect apiMedkinect = new ApiMedkinect();
             public Calendars() { }
 
             public int id;
@@ -18,41 +17,38 @@ namespace API_MEDKINECT
             public string date_type;
             public string result;
             public string status;
-          
 
-            public Object update_patients()
+
+            public Object update_calendars()
             {
-                Object result;
-                result = apiMedkinect.conexion_rest("put", "api/calendars", this, this.id);
-                return result;
+                return this.conexion_rest("post", "api/calendars/#/update", this, this.id);
             }
 
-            public Object create_patients()
+            public Object create_calendars()
             {
-                Object result;
-                result = apiMedkinect.conexion_rest("post", "api/calendars", this, 0);
-                return result;
+                return this.conexion_rest("post", "api/calendars/new", this, -1);
             }
 
-            public Object delete_patients()
+            public Object delete_calendars()
             {
-                Object result;
-                result = apiMedkinect.conexion_rest("delete", "api/calendars", null, this.id);
-                return result;
+                return this.conexion_rest("post", "api/calendars/#/delete", this, this.id);
             }
 
-            public Object get_patients()
+            public Object get_calendars()
             {
-                Object result;
-                result = apiMedkinect.conexion_rest("get", "api/calendars", null, this.id);
-                return result;
+                return this.conexion_rest("get", "api/calendars/#", null, this.id);
+
             }
 
-            public Object get_all_patients()
+            public Object get_all_calendars()
             {
-                Object result;
-                result = apiMedkinect.conexion_rest("getall", "api/calendars", null, 0);
-                return result;
+                return this.conexion_rest("get", "api/calendars", null, -1);
+
+            }
+            public Object get_by_user()
+            {
+                return this.conexion_rest("get", "api/calendars/user/#", this, this.user_id);
+
             }
         }
 }

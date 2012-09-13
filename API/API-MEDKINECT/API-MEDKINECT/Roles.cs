@@ -6,52 +6,41 @@ using System.Threading.Tasks;
 
 namespace API_MEDKINECT
 {
-    public class Roles 
+    public class Roles : ApiMedkinect
     {
-        ApiMedkinect apiMedkinect = new ApiMedkinect();
+       
         public Roles() { }
 
         public int id;
         public string title;
         public string description;
-        public string e;
         public string access;
-        public int user_id;
-
 
         public Object update_roles()
         {
-            Object result;
-            result = apiMedkinect.conexion_rest("put", "api/roles", this, this.id);
-            return result;
+            return this.conexion_rest("post", "api/roles/#/update", this, this.id);
         }
 
         public Object create_roles()
         {
-            Object result;
-            result = apiMedkinect.conexion_rest("post", "api/roles", this, 0);
-            return result;
+            return this.conexion_rest("post", "api/roles/new", this, -1);
         }
 
         public Object delete_roles()
         {
-            Object result;
-            result = apiMedkinect.conexion_rest("delete", "api/roles", null, this.id);
-            return result;
+            return this.conexion_rest("post", "api/roles/#/delete", this, this.id);
         }
 
         public Object get_roles()
         {
-            Object result;
-            result = apiMedkinect.conexion_rest("get", "api/roles", null, this.id);
-            return result;
+            return this.conexion_rest("get", "api/roles/#", null, this.id);
+
         }
 
         public Object get_all_roles()
         {
-            Object result;
-            result = apiMedkinect.conexion_rest("getall", "api/roles", null, 0);
-            return result;
+            return this.conexion_rest("get", "api/roles", null, -1);
+
         }
     }
 }

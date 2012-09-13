@@ -8,3 +8,8 @@ E:\respaldo git\medkinect\API\API-MEDKINECT\API-MEDKINECT\bin\Debug\API-MEDKINEC
 E:\respaldo git\medkinect\API\API-MEDKINECT\API-MEDKINECT\obj\Debug\API-MEDKINECT.csprojResolveAssemblyReference.cache
 E:\respaldo git\medkinect\API\API-MEDKINECT\API-MEDKINECT\obj\Debug\API-MEDKINECT.dll
 E:\respaldo git\medkinect\API\API-MEDKINECT\API-MEDKINECT\obj\Debug\API-MEDKINECT.pdb
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\API-MEDKINECT\bin\Debug\API-MEDKINECT.dll
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\API-MEDKINECT\bin\Debug\API-MEDKINECT.pdb
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\API-MEDKINECT\obj\Debug\API-MEDKINECT.csprojResolveAssemblyReference.cache
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\API-MEDKINECT\obj\Debug\API-MEDKINECT.dll
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\API-MEDKINECT\obj\Debug\API-MEDKINECT.pdb

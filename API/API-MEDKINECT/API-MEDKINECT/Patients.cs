@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace API_MEDKINECT
 {
-     public  class Patients
+     public  class Patients : ApiMedkinect
         {
-            ApiMedkinect apiMedkinect = new ApiMedkinect();
             public Patients() { }
 
             public int id;
@@ -28,37 +27,29 @@ namespace API_MEDKINECT
 
             public Object update_patients()
             {
-                Object result;
-                result = apiMedkinect.conexion_rest("put", "api/patients", this, this.id);
-                return result;
+                return this.conexion_rest("post", "api/patients/#/update", this, this.id);
             }
 
             public Object create_patients()
             {
-                Object result;
-                result = apiMedkinect.conexion_rest("post", "api/patients", this, 0);
-                return result;
+                return this.conexion_rest("post", "api/patients/new", this, -1);
             }
 
             public Object delete_patients()
             {
-                Object result;
-                result = apiMedkinect.conexion_rest("delete", "api/patients", null, this.id);
-                return result;
+                return this.conexion_rest("post", "api/patients/#/delete", this, this.id);
             }
 
             public Object get_patients()
             {
-                Object result;
-                result = apiMedkinect.conexion_rest("get", "api/patients", null, this.id);
-                return result;
+                return this.conexion_rest("get", "api/patients/#", null, this.id);
+
             }
 
             public Object get_all_patients()
             {
-                Object result;
-                result = apiMedkinect.conexion_rest("getall", "api/patients", null, 0);
-                return result;
+                return this.conexion_rest("get", "api/patients", null, -1);
+
             }
         }
 }

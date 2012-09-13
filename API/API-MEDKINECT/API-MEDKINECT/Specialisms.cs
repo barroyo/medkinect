@@ -6,49 +6,39 @@ using System.Threading.Tasks;
 
 namespace API_MEDKINECT
 {
-    public class Specialisms
+    public class Specialisms : ApiMedkinect
     {
-        ApiMedkinect apiMedkinect = new ApiMedkinect();
         public Specialisms() { }
 
         public string title;
         public string description;
         public int id;
 
-
         public Object update_specialism()
         {
-            Object result;
-            result = apiMedkinect.conexion_rest("put", "api/specialisms", this, this.id);
-            return result;
+            return this.conexion_rest("post", "api/specialisms/#/update", this, this.id);
         }
 
         public Object create_specialism()
         {
-            Object result;
-            result = apiMedkinect.conexion_rest("post", "api/specialisms", this, 0);
-            return result;
+            return this.conexion_rest("post", "api/specialisms/new", this, -1);
         }
 
         public Object delete_specialism()
         {
-            Object result;
-            result = apiMedkinect.conexion_rest("delete", "api/specialisms", null, this.id);
-            return result;
+            return this.conexion_rest("post", "api/specialisms/#/delete", this, this.id);
         }
 
         public Object get_specialism()
         {
-            Object result;
-            result = apiMedkinect.conexion_rest("get", "api/specialisms", null, this.id);
-            return result;
+            return this.conexion_rest("get", "api/specialisms/#", null, this.id);
+
         }
 
         public Object get_all_specialism()
         {
-            Object result;
-            result = apiMedkinect.conexion_rest("getall", "api/specialisms", null, 0);
-            return result;
+            return this.conexion_rest("get", "api/specialisms", null, -1);
+
         }
     }
 }

@@ -16,3 +16,12 @@ E:\respaldo git\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\API-ME
 E:\respaldo git\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\Newtonsoft.Json.dll
 E:\respaldo git\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\API-MEDKINECT.pdb
 E:\respaldo git\medkinect\API\API-MEDKINECT\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\API-MEDKINECT.dll
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\ConsoleApplication1\bin\Debug\API-MEDKINECT.pdb
+C:\Users\DotCreek\medkinect\API\API-MEDKINECT\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
