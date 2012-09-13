@@ -24,9 +24,9 @@ module Api
 
         respond_to do |format|
           if @specialism.save
-            format.json { render json: @Specialism, status: :created, location: @user }
+            format.json { render json: @specialism, status: :created, location: @user }
           else
-            format.json { render json: @Specialism.errors, status: :unprocessable_entity }
+            format.json { render json: @specialism.errors, status: :unprocessable_entity }
           end
         end
       end

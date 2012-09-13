@@ -71,6 +71,7 @@ Server::Application.routes.draw do
     resources :roles
   end
 
+  get 'users', :to =>  'users#index', :as => :root_loged
   post 'users/login' , :defaults => { :format => 'json' }
   post 'users' => 'users#new'
 
