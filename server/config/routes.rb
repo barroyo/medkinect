@@ -1,5 +1,11 @@
 Server::Application.routes.draw do
 
+  get 'home', :to => 'home#index'
+  get 'twitter', :to => 'twitter#index'
+  get "twitter/index"
+
+  get "twitter/post"
+
   resources :calendars
 
   match 'dates', :to => 'calendars#index'
@@ -47,6 +53,13 @@ Server::Application.routes.draw do
       post "specialisms/:specialism_id/delete", :to => "specialisms#destroy", :defaults => { :format => 'json' }
       post "specialisms/new", :to => "specialisms#create", :defaults => { :format => 'json' }
 
+      #calendars controller
+      get "calendars", :to => "calendars#index", :defaults => { :format => 'json' }
+      get "calendars/:calendar_id", :to => "calendars#show", :defaults => { :format => 'json' }
+      get "calendars/user/:user_id", :to => "calendars#show_user_dates", :defaults => { :format => 'json' }
+      post "calendars/:calendar_id/update", :to => "calendars#update", :defaults => { :format => 'json' }
+      post "calendars/:calendar_id/delete", :to => "calendars#destroy", :defaults => { :format => 'json' }
+      post "calendars/new", :to => "calendars#create", :defaults => { :format => 'json' }
 
     end
   #future API V2, for request into header; 'Accept: application/vnd.medkinect.v2'
@@ -54,6 +67,7 @@ Server::Application.routes.draw do
   #  resources :users
   #end
   end
+
 
   root :to => 'login#index'
   get "login", :to => "login#index"

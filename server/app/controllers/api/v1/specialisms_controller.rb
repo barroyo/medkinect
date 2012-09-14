@@ -46,7 +46,7 @@ module Api
 
       # DELETE /specialism/id/delete
       def destroy
-        @specialism = User.find(params[:specialism_id])
+        @specialism = Specialism.find(params[:specialism_id])
         @specialism.destroy
 
         respond_to do |format|

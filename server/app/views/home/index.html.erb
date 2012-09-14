@@ -1,0 +1,10 @@
+<% @twi.each do |tweet| %>
+  <div>
+  	<a class="account-group js-account-group js-action-profile js-user-profile-link js-nav" href="/medkinect" data-user-id="822285216">
+      <img class="avatar" src="<%= tweet.user.profile_image_url %>" alt="<%= tweet.user.name %>">
+      <strong class="fullname js-action-profile-name show-popup-with-id"><%= tweet.user.name %></strong>
+      <span>‏</span><span class="username js-action-profile-name"><s>@</s><b><%= tweet.user.screen_name %></b></span>
+    </a>
+		<p><%= tweet.text.html_safe %></p>
+	</div>
+<%end if !@twi.nil?%>
