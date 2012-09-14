@@ -1,4 +1,6 @@
 class TwitterController < ApplicationController
+  
+  before_filter :require_login
   def index
   	@twi = Twitter.user_timeline("medkinect")
   	respond_to do |format|
@@ -7,12 +9,14 @@ class TwitterController < ApplicationController
   end
 
   def post
+  	 token = session[:user].integration.token
+  	 secret = session[:user].integration.secret
   	@client = Twitter::Client.new(
-		  :oauth_token => "126003850-KX749IRsyiYiZMexGKHnuoxiJNHL5ayt766bkPhy",
-		  :oauth_token_secret => "KZuFqUmzPXJR2C7Qd2asgZInEaTBs5G5gecDeFosI"
+		  :oauth_token => token,
+		  :oauth_token_secret => secret
 		)
   	respond_to do |format|
-  		format.json {render json: @client.update("Hi Every1 !")}
+  		format.json {render json: @client.update("From Our Web Application")}
   	end
   end
 end

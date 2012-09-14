@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :specialismships
   has_many :specialisms, :through => :specialismships
   validates_presence_of :username, :email, :fullname,:password
-  validates :kinect_agle, :numericality => { :greater_than => -27, :less_than_or_equal_to => 27}, :presence => true
+  validates :kinect_angle, :numericality => { :greater_than_or_equal_to  => -27, :less_than_or_equal_to => 27}
   validates_uniqueness_of :username, :email
   validates_length_of :password, :minimum => 4
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email format"

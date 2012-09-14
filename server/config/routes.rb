@@ -69,7 +69,7 @@ Server::Application.routes.draw do
   end
 
   match "/auth/:provider/callback" => "integrations#create", :defaults => { :format => 'json' }
-  root :to => 'login#index'
+  root :to => 'home#index'
   get "login", :to => "login#index", :as => :login_path
   get "login/index"
   post "login/login"

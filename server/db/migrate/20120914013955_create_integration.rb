@@ -1,6 +1,6 @@
 class CreateIntegration < ActiveRecord::Migration
   def change
-    create_table :integration do |t|
+    create_table :integrations do |t|
       t.integer :user_id
       t.string :provider
       t.string :provider_uid
