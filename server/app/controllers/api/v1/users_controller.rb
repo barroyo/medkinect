@@ -88,6 +88,7 @@ module Api
         @user.email = params[:email]
         @user.fullname = params[:fullname]
         @user.role_id = params[:role_id] if !params[:role_id].nil?
+        @user.kinect_agle = params[:kinect_agle]
         respond_to do |format|
           if @user.save()
             format.json { render json: {:updated => true}  }

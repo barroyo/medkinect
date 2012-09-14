@@ -1,3 +1,8 @@
+<%= notice %>
+<%if !session[:user].integration.nil? %>
+	hola vithe, a postear en twitter
+<% end %>
+
 <% @twi.each do |tweet| %>
   <div>
   	<a class="account-group js-account-group js-action-profile js-user-profile-link js-nav" href="/medkinect" data-user-id="822285216">

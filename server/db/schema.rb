@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913032320) do
+ActiveRecord::Schema.define(:version => 20120914024749) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(:version => 20120913032320) do
     t.string   "market_capitalization", :limit => 15
     t.string   "related_symbols",       :limit => 50
     t.datetime "storage_date"
+  end
+
+  create_table "integrations", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "provider_uid"
+    t.text     "token"
+    t.text     "secret"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "patients", :force => true do |t|
@@ -136,9 +146,10 @@ ActiveRecord::Schema.define(:version => 20120913032320) do
     t.string   "email"
     t.string   "fullname"
     t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "role_id"
+    t.float    "kinect_angle"
   end
 
 end
