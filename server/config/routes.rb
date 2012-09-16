@@ -1,9 +1,9 @@
 Server::Application.routes.draw do
 
-  get 'home', :to => 'home#index'
+  get 'home', :to => 'home#index', :as => :home
   get 'twitter', :to => 'twitter#index'
   get "twitter/index"
-
+  get 'auth/twitter', :as => :twitter_authentication
   get "twitter/post"
 
   resources :calendars
@@ -68,9 +68,9 @@ Server::Application.routes.draw do
   #end
   end
 
-
-  root :to => 'login#index'
-  get "login", :to => "login#index"
+  match "/auth/:provider/callback" => "integrations#create", :defaults => { :format => 'json' }
+  root :to => 'home#index'
+  get "login", :to => "login#index", :as => :login_path
   get "login/index"
   post "login/login"
   get "login/logout"

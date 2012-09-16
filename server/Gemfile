@@ -4,6 +4,7 @@ gem 'rails', '3.2.1'
 #gem 'rails-api'
 #gem 'rabl'
 gem 'twitter'
+gem 'omniauth-twitter'
 gem 'client_side_validations'
 gem 'mongrel', '1.2.0.pre2'
 # Bundle edge Rails instead:

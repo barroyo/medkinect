@@ -1,7 +1,7 @@
 class LoginController < ApplicationController
   def index
     if !session[:user].nil?
-      redirect_to :root_loged
+      redirect_to :home, :notice => "You Are Already Logged In"
     else
       respond_to { |format|
         format.html
@@ -11,7 +11,7 @@ class LoginController < ApplicationController
 
   def login
     if session[:user] = User.authenticate(params[:username], params[:password])
-      redirect_to :controller => "users", :action => "index"
+      redirect_to :home
     else
       flash[:message] = "Enter valid credentials!"
       redirect_to :action => "index"

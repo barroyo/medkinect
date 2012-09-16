@@ -17,20 +17,28 @@ set :deploy_subdir, 'server'
 # after "deploy:restart", "deploy:cleanup"
 #after 'deploy:update', 'bundle:install', 'deploy:migrate'
 
-after "deploy:restart","deploy:update_swf"
+after "deploy:db_migrate", "deploy:install_gems"
+after "deploy:install_gems","deploy:restart"
 #after 'deploy:update_code', 'deploy:migrate'
 
 
 namespace :deploy do
 
+ desc "Restart Apache"
   task :restart do
     run "sudo /etc/init.d/apache2 restart"
   end
 
-  desc "reload the database with seed data"
-  task :seed do
+  desc "migrate db"
+  task :db_migrate do
     run "cd #{current_path}; rake db:migrate RAILS_ENV=#{rails_env}"
   end
+
+  desc "install gems"
+  task :install_gems do
+    run "cd #{current_path}; bundle install"
+  end
+
 end
 
 # if you're still using the script/reaper helper you will need

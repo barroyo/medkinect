@@ -15,7 +15,7 @@
 						<% if !session[:user].nil? %>
 						<ul id="nav">
 							<li class="top">
-								<a href="#nogo1" class="top_link"><span>Home</span></a>
+								<%= link_to 'Home', :home %>
 							</li>
 							<li class="top">
 								<a href="/users" class="top_link"><span class="down">Users</span> </a>
@@ -34,16 +34,16 @@
 								</ul>
 							</li>
 							<li class="top">
-								<a href="#nogo27" id="contacts" class="top_link"><span class="down">Manteinament</span></a>
-								<ul>
-									<li><li>
-								    <li><li>
-								    <li><li>
+								<a href="" id="contacts" class="top_link"><span class="down">Manteinament</span></a>
+								<ul class="sub">
+									<li>
+										<%= link_to 'Twitter Integration', :twitter_authentication %>
+									</li>
 								</ul>
 							</li>
 						</ul>
 						<% else %>
-						<span>Medkinect</span>
+						<span class>Medkinect</span>
 						<% end %>
 					</div>
 				</div>
