@@ -22,19 +22,21 @@ namespace ConsoleApplication1
             user.email = "diego3@lol.com";
             user.fullname = "pedro3";
             user.password = "123";
-            user.role_id = 0;
+            user.role_id = 2;
             user.status = "en";
             user.username = "juan123";
             user.new_password = "1234";
-            user.id = 6;
+            user.id = 9;
+            user.kinect_angle = 2;
             /*update user*/
-      //   Object test1 = user.update_user();
+       //  Object test1 = user.update_user();
             
             /*validate user*/
        //   Object test1 = user.loggin(); 
             
             /*create user*/
-       //  Object test1 = user.create_user();
+      
+            Object test1 = user.create_user();
          
             /*delete user*/
        //  Object test1 = user.delete_user();
@@ -44,7 +46,7 @@ namespace ConsoleApplication1
            //Object test1 = user.get_user();
             
             /*get all users*/
-       // Object test1 = user.get_all_user();
+      // Object test1 = user.get_all_user();
           
             /*change password users*/
             //  Object test1 = user.change_password();
@@ -52,9 +54,9 @@ namespace ConsoleApplication1
             #endregion
             #region specialisms test
             
-            specialisms.description = "ophthalmologist2";
+         /*   specialisms.description = "ophthalmologist2";
             specialisms.title = "ophthalmologist2";
-            specialisms.id = 4;
+            specialisms.id = 4;*/
 
             /*update Specialisms*/
           //     Object test1 = specialisms.update_specialism();
@@ -173,7 +175,8 @@ namespace ConsoleApplication1
            //   Object test1 = calendars.get_all_calendars();
              
             /*get  calendar by user*/
-            Object test1 = calendars.get_by_user();
+           
+            //Object test1 = calendars.get_by_user();
             #endregion
 
             Console.WriteLine(test1);

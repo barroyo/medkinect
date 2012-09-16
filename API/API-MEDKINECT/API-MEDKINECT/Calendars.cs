@@ -17,6 +17,7 @@ namespace API_MEDKINECT
             public string date_type;
             public string result;
             public string status;
+            public string diagnostic;
 
 
             public Object update_calendars()

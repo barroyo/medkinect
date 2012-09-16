@@ -29,6 +29,9 @@ namespace API_MEDKINECT
 
         public String new_password;
 
+        public float kinect_angle;
+   
+
         public Object loggin()
         {
             return this.conexion_rest("post", "api/users/login", this, -1);
