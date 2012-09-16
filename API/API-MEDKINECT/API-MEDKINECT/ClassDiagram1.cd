@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="API_MEDKINECT.ApiMedkinect">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiMedkinect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API_MEDKINECT.Calendars">
+    <Position X="5.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAwCAAAAAAAFAAAAAEAAEAAAAAAAAAACQIAggA=</HashCode>
+      <FileName>Calendars.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API_MEDKINECT.Patients">
+    <Position X="9.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAABAAhAAAUABAQAAAAABAMAAAAgBCAAgAAAAgA=</HashCode>
+      <FileName>Patients.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API_MEDKINECT.Roles">
+    <Position X="1.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABBABQAAAAAACIAAAAAAAAQAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Roles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API_MEDKINECT.Sicks">
+    <Position X="7.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAUAAAAIAQAAAAAAAAAAAAAAAAQAAAAQgA=</HashCode>
+      <FileName>Sicks.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API_MEDKINECT.Specialisms">
+    <Position X="11.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAgQAIACAAAIAAAgAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Specialisms.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="API_MEDKINECT.User">
+    <Position X="3.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KgQAAAAAAAAAAIAgCAACAAEAAAAAAAAAAEAAAgAChiA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
