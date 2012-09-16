@@ -83,11 +83,12 @@ Server::Application.routes.draw do
   resources :roles
   resources :specialisms
 
-  get 'users', :to => 'users#index', :as => :users_path
-  get 'users/new', :to => 'users#new'
+  get 'users', :to => 'users#index', :as => :users
+  get 'users/new', :to => 'users#new', :as => :new_user
   get 'users/:id', :to => 'users#show', :as => :user
-  get 'users/:id/edit', :to => 'users#edit'
+  get 'users/:id/edit', :to => 'users#edit', :as => :edit_user
   put 'users/:id', :to => 'users#update'
+  delete 'users/:id', :to => 'users#destroy'
 =begin
   resources :users do
     resources :roles

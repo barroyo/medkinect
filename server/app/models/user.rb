@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :role
   has_one :integration
-  has_many  :calendar
+  has_many  :calendars
   has_many :specialismships
   has_many :specialisms, :through => :specialismships
   validates_presence_of :username, :email, :fullname

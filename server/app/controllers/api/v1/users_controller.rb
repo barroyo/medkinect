@@ -104,7 +104,7 @@ module Api
         @user = User.find(params[:user_id])
 
         #delete all calendars related with the user
-        @user.calendas.delete_all
+        @user.calendars.delete_all
 
         @user.destroy
 

@@ -100,8 +100,8 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
-
-
+    @user.calendars.delete_all
+    @user.specialismships.delete_all
     
     @user.destroy
 
