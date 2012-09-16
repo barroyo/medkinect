@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914024749) do
+ActiveRecord::Schema.define(:version => 20120916152753) do
 
   create_table "api_keys", :force => true do |t|
     t.string   "access_token"
@@ -29,7 +29,11 @@ ActiveRecord::Schema.define(:version => 20120914024749) do
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.text     "diagnostic"
   end
+
+  add_index "calendars", ["patient_id"], :name => "calendar_patient_foreign"
+  add_index "calendars", ["user_id"], :name => "calendar_user_foreign"
 
   create_table "historical_scores", :force => true do |t|
     t.integer  "symbol_id",                                                                           :null => false
@@ -56,6 +60,8 @@ ActiveRecord::Schema.define(:version => 20120914024749) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "integrations", ["user_id"], :name => "integration_user_foreign"
 
   create_table "patients", :force => true do |t|
     t.string   "firstname"
@@ -100,6 +106,16 @@ ActiveRecord::Schema.define(:version => 20120914024749) do
 
   add_index "scores", ["symbol_id"], :name => "fk_symbol"
 
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
   create_table "sicks", :force => true do |t|
     t.string   "title"
     t.string   "description"
@@ -115,6 +131,9 @@ ActiveRecord::Schema.define(:version => 20120914024749) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "sickships", ["patient_id"], :name => "sickship_user_foreign"
+  add_index "sickships", ["sick_id"], :name => "sickship_sick_foreign"
+
   create_table "specialisms", :force => true do |t|
     t.string   "title"
     t.string   "description"
@@ -128,6 +147,9 @@ ActiveRecord::Schema.define(:version => 20120914024749) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "specialismships", ["specialism_id"], :name => "spec_foreign_key"
+  add_index "specialismships", ["user_id"], :name => "user_foreign_key"
 
   create_table "stock_symbols", :force => true do |t|
     t.string   "symbol",            :limit => 5, :null => false
@@ -151,5 +173,7 @@ ActiveRecord::Schema.define(:version => 20120914024749) do
     t.integer  "role_id"
     t.float    "kinect_angle"
   end
+
+  add_index "users", ["role_id"], :name => "user_role_foreign"
 
 end

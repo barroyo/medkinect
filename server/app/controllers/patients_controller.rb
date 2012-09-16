@@ -1,4 +1,7 @@
 class PatientsController < ApplicationController
+
+  before_filter :require_login
+
   # GET /patients
   # GET /patients.json
   def index

@@ -1,4 +1,7 @@
 class SicksController < ApplicationController
+
+  before_filter :require_login
+
   # GET /sicks
   # GET /sicks.json
   def index

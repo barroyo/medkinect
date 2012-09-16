@@ -1,4 +1,7 @@
 class RolesController < ApplicationController
+
+  before_filter :require_login
+  
   # GET /roles
   # GET /roles.json
   def index

@@ -14,7 +14,7 @@
   <tr>
     <td><%= role.title %></td>
     <td><%= role.description %></td>
-    <td><%= role.access %></td>
+    <td><%= $role_access_labels[role.access] %></td>
     <td><%= link_to 'Show', role %></td>
     <td><%= link_to 'Edit', edit_role_path(role) %></td>
     <td><%= link_to 'Destroy', role, confirm: 'Are you sure?', method: :delete %></td>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Role', new_role_path %>
+<%= link_to 'New Role', new_role_path, :class => 'greenbutton' %>

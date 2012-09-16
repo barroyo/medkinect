@@ -75,18 +75,26 @@ Server::Application.routes.draw do
   post "login/login"
   get "login/logout"
 
+
   resources :sicks
 
   resources :patients
 
   resources :roles
   resources :specialisms
+
+  get 'users', :to => 'users#index', :as => :users_path
+  get 'users/new', :to => 'users#new'
+  get 'users/:id', :to => 'users#show', :as => :user
+  get 'users/:id/edit', :to => 'users#edit'
+  put 'users/:id', :to => 'users#update'
+=begin
   resources :users do
     resources :roles
   end
+=end
 
-  get 'users', :to =>  'users#index', :as => :root_loged
-  post 'users/login' , :defaults => { :format => 'json' }
+  post 'users/login'
   post 'users' => 'users#new'
 
   put '/users' => 'users#update'

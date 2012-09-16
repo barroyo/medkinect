@@ -20,9 +20,10 @@
   </div>
   <div class="field">
     <%= f.label :access %><br />
-    <%= f.text_field :access %>
+    <%= f.select :access, $role_access, 
+    :selected => !@role.access.nil? ? @role.access : 'bas' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'greenbutton'%>
   </div>
 <% end %>

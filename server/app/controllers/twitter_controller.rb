@@ -1,6 +1,7 @@
 class TwitterController < ApplicationController
   
   before_filter :require_login
+  
   def index
   	@twi = Twitter.user_timeline("medkinect")
   	respond_to do |format|

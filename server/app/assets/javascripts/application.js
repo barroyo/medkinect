@@ -15,6 +15,7 @@
 //= require_tree .
 
 $(document).ready(function() {
+	$("a[href='http://apycom.com/']").parent().remove();
 	$("div#tabs").tabs();
 	$('#add-row').click(function() {
 		return !$('#select1 option:selected').remove().appendTo('#select2');

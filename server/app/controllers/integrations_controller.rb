@@ -9,6 +9,9 @@ class IntegrationsController < ApplicationController
 		if integration.nil?
 			integration = Integration.create_with_omniauth(session[:user],auth)
 			integration.save
+		else
+	    integration.update_attributes(:token => auth["credentials"]["token"],
+	    	:secret => auth["credentials"]["secret"])
 		end 
 
 		redirect_to :home, :notice => "Twitter Successfully Integrated"

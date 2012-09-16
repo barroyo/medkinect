@@ -44,7 +44,7 @@ module Api
           if @user.save
             format.json { render json: @user, status: :created, location: @user }
           else
-            format.json { render json: {:errors => @user.errors}, status: :unprocessable_entity }
+            format.json { render json: {:errors => @user.errors}}
           end
         end
       end
@@ -93,7 +93,7 @@ module Api
           if @user.save()
             format.json { render json: {:updated => true}  }
           else
-            format.json { render json: {:errors => @user.errors}, status: :unprocessable_entity }
+            format.json { render json: {:errors => @user.errors} }
           end
         end
       end
@@ -102,6 +102,10 @@ module Api
       # POST /users/1/delete
       def destroy
         @user = User.find(params[:user_id])
+
+        #delete all calendars related with the user
+        @user.calendas.delete_all
+
         @user.destroy
 
         respond_to do |format|

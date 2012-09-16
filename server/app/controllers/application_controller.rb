@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   #protect_from_forgery
+  $role_access =  {"All" => "all", "Medium" => "med",'Basic' => 'bas'}
+  $role_access_labels =  {"all" => "All", "med" => "medium",'bas' => 'Basic'}
+
+  $calendars_type = {"Medical Consultation" => "mc", "Date" => "dt"}
+  $calendars_type_label ={"mc" => "Medical Consultation","dt" => "Date"}
   respond_to :json,:xml,:html
   ##add login method
    
@@ -22,5 +27,13 @@ class ApplicationController < ActionController::Base
     end
   end
   
+
+  helper_method :current_user
+
+  private
+
+  def current_user
+    @current_user ||= User.find(session[:user].id) if session[:user]
+  end
   
 end

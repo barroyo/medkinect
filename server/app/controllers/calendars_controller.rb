@@ -1,7 +1,10 @@
 class CalendarsController < ApplicationController
+
+  before_filter :require_login
+  
   # GET /calendars
   # GET /calendars.json
-  def index
+  def  index
     @calendars = Calendar.all
 
     respond_to do |format|

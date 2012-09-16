@@ -18,7 +18,7 @@
 								<%= link_to 'Home', :home %>
 							</li>
 							<li class="top">
-								<a href="/users" class="top_link"><span class="down">Users</span> </a>
+								<a href="<%= users_path %>" class="top_link"><span class="down">Users</span> </a>
 								<ul class="sub">
 									<li>
 										<%= link_to 'New User', new_user_path , :id => "news_user" %>
@@ -26,7 +26,7 @@
 								</ul>
 							</li>
 							<li class="top">
-								<a href="/patients" class="top_link"><span class="down">Patients</span> </a>
+								<a href="<%= patients_path %>" class="top_link"><span class="down">Patients</span> </a>
 								<ul class="sub">
 									<li>
 										<%= link_to 'New Patient', new_patient_path , :id => "news_patient" %>
@@ -36,9 +36,20 @@
 							<li class="top">
 								<a href="" id="contacts" class="top_link"><span class="down">Manteinament</span></a>
 								<ul class="sub">
-									<li>
-										<%= link_to 'Twitter Integration', :twitter_authentication %>
+									<li class="top">
+										<%= link_to 'Profile', current_user, :class => "top_link" %>
 									</li>
+									<% current_user.role.access %>
+									<% if current_user.role.access == 'all' %>
+									<li class="top">
+										<%= link_to 'Roles', roles_path, :class => "top_link" %>
+									</li>
+									<% end %>
+									<% if session[:user].integration.nil? %>
+									<li>
+										<%= link_to 'Twitter Int', :twitter_authentication %>
+									</li>
+									<% end %>
 								</ul>
 							</li>
 						</ul>

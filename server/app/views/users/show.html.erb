@@ -27,7 +27,7 @@
     </p>
     <p>
       <b>Role:</b>
-      <%= @user.role.title %>
+      <%= @user.role.title %>(<%= $role_access_labels[@user.role.access]%>)
     </p>
     <% if @user.specialisms.size > 0 %>
     <p>

@@ -12,7 +12,7 @@
   <tr>
     <td><%= calendar.patient.fullname %></td>
     <td><%= calendar.date %></td>
-    <td><%= calendar.date_type %></td>
+    <td><%= $calendars_type_label[calendar.date_type] %></td>
     <td><%= link_to 'Show', calendar %></td>
   </tr>
 <% end %>

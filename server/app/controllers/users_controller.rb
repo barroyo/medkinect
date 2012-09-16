@@ -34,7 +34,6 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @specialismslist = Specialism.find(:all)
     respond_with(@user)
   end
 
@@ -55,11 +54,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.password = Digest::MD5.hexdigest(@user.password)
+    @user.kinect_angle = 0
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
+        @user.password = params[:user][:password]
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -71,18 +72,22 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.specialisms.destroy_all
-
-    @specialityes = params[:specialisms]
-
-    if !@specialityes.nil?
-      @specialityes.each do |id|
+    @user.username = params[:user][:username]
+    @user.email = params[:user][:email]
+    @user.fullname = params[:user][:fullname]
+    @user.role_id = params[:user][:role_id]
+    @user.kinect_angle = 0
+    @user.password = Digest::MD5.hexdigest('123123')
+    @specialities = params[:specialisms]
+    if !@specialities.nil?
+      @specialities.each do |id|
         Specialismship.new({:specialism_id => id, :user_id => @user.id}).save
       end
     end
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice:  @specialityes}
+      if @user.save
+        format.html { redirect_to @user}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -95,6 +100,9 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
+
+
+    
     @user.destroy
 
     respond_to do |format|
