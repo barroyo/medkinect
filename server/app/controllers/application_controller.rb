@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   #protect_from_forgery
+  
   $role_access =  {"All" => "all", "Medium" => "med",'Basic' => 'bas'}
   $role_access_labels =  {"all" => "All", "med" => "medium",'bas' => 'Basic'}
 

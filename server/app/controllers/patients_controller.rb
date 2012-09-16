@@ -5,7 +5,7 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.all
+    @patients = Patient.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

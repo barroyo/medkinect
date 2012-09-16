@@ -5,7 +5,7 @@ class SpecialismsController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @Specialisms = Specialism.all
+    @Specialisms = Specialism.paginate(:page => params[:page])
     respond_with(@Specialisms)
   end
 

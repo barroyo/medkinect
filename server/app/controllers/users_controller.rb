@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.paginate(:page => params[:page])
     respond_to { |format|
       format.html
       format.json { render :json => @users.to_json(:include => :specialisms) }
@@ -76,8 +76,8 @@ class UsersController < ApplicationController
     @user.email = params[:user][:email]
     @user.fullname = params[:user][:fullname]
     @user.role_id = params[:user][:role_id]
-    @user.kinect_angle = 0
-    @user.password = Digest::MD5.hexdigest('123123')
+    @user.kinect_angle = params[:user][:kinect_angle]
+
     @specialities = params[:specialisms]
     if !@specialities.nil?
       @specialities.each do |id|

@@ -8,7 +8,9 @@
 		<%= javascript_include_tag "rails.validations", "rails.validations.custom", "jquery-ui-1.7.3.custom.min" %>
 	</head>
 	<body>
+	
 		<div class="body_wrap">
+				<div class="top_banner"></div>
 			<div class="entry_page">
 				<div id="header">
 					<div id="menu">
@@ -43,6 +45,12 @@
 									<% if current_user.role.access == 'all' %>
 									<li class="top">
 										<%= link_to 'Roles', roles_path, :class => "top_link" %>
+									</li>
+									<li class="top">
+										<%= link_to 'Sicks', sicks_path, :class => "top_link" %>
+									</li>
+									<li class="top">
+										<%= link_to 'Specialisms', specialisms_path, :class => "top_link" %>
 									</li>
 									<% end %>
 									<% if session[:user].integration.nil? %>

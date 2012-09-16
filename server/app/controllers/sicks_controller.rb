@@ -5,7 +5,7 @@ class SicksController < ApplicationController
   # GET /sicks
   # GET /sicks.json
   def index
-    @sicks = Sick.all
+    @sicks = Sick.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
