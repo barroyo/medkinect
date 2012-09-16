@@ -73,7 +73,7 @@ Server::Application.routes.draw do
   get "login", :to => "login#index", :as => :login_path
   get "login/index"
   post "login/login"
-  get "login/logout"
+  get "login/logout", :as => :logout
 
 
   resources :sicks

@@ -11,8 +11,15 @@
 	
 		<div class="body_wrap">
 				<div class="top_banner"></div>
+
 			<div class="entry_page">
-				<div id="header">
+				<% if current_user %>
+				<div style="float:right;padding-top: 10px;padding-right: 5px;">
+				  <span> Welcome <%= current_user.fullname%> </span>
+				 <%= link_to 'logout', logout_path , :id => "logout" %>
+				</div>
+				<% end %>
+				<div id="header" style="clean:both">
 					<div id="menu">
 						<% if !session[:user].nil? %>
 						<ul id="nav">
@@ -36,7 +43,7 @@
 								</ul>
 							</li>
 							<li class="top">
-								<a href="" id="contacts" class="top_link"><span class="down">Manteinament</span></a>
+								<a href="/users/<%=current_user.id%>" id="contacts" class="top_link"><span class="down">Manteinament</span></a>
 								<ul class="sub">
 									<li class="top">
 										<%= link_to 'Profile', current_user, :class => "top_link" %>
