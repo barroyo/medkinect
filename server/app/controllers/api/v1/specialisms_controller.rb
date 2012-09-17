@@ -26,7 +26,7 @@ module Api
           if @specialism.save
             format.json { render json: @specialism, status: :created, location: @user }
           else
-            format.json { render json: @specialism.errors, status: :unprocessable_entity }
+            format.json { render json: @specialism.errors}
           end
         end
       end
@@ -39,7 +39,7 @@ module Api
           if @specialism.update_attributes(params[:specialism])
             format.json { render json: {:updated => true} }
           else
-            format.json { render json: {:errors => @specialism.errors}, status: :unprocessable_entity }
+            format.json { render json: {:errors => @specialism.errors} }
           end
         end
       end

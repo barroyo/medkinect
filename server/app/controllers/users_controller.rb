@@ -72,6 +72,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.specialisms.destroy_all
+    @user.status = params[:user][:status]
     @user.username = params[:user][:username]
     @user.email = params[:user][:email]
     @user.fullname = params[:user][:fullname]

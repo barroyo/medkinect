@@ -33,7 +33,7 @@ module Api
           if @patient.save
             format.json { render json: @patient, status: :created, location: @patient }
           else
-            format.json { render json: {:errors =>@patient.errors}, status: :unprocessable_entity }
+            format.json { render json: {:errors =>@patient.errors} }
           end
         end
       end
@@ -46,7 +46,7 @@ module Api
           if @patient.update_attributes(params[:patient])
             format.json { render json: {:updated => true} }
           else
-            format.json { render json: {:errors => @patient.errors}, status: :unprocessable_entity }
+            format.json { render json: {:errors => @patient.errors} }
           end
         end
       end

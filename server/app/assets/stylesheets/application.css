@@ -439,3 +439,6 @@ box-shadow: inset 0 1px 3px rgba(0, 0, 0, .05),0 0 8px rgba(82, 168, 236, .6) !i
 
 .right {float: right;}
 .clean{clear: both;}
+
+.user_info {font-weight: bold;
+color: white;}

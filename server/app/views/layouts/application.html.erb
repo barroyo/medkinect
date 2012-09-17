@@ -14,7 +14,7 @@
 
 			<div class="entry_page">
 				<% if current_user %>
-				<div style="float:right;padding-top: 10px;padding-right: 5px;">
+				<div style="float:right;padding-top: 10px;padding-right: 5px;" class="user_info">
 				  <span> Welcome <%= current_user.fullname%> </span>
 				 <%= link_to 'logout', logout_path , :id => "logout" %>
 				</div>

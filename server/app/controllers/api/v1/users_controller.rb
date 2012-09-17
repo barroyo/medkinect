@@ -67,6 +67,7 @@ module Api
               format.json { render :json => {:errors => @user.errors} }
             end
           else
+            
             format.json { render :json => {:errors => [:invalid => true]} }
           end
         end
@@ -89,6 +90,7 @@ module Api
         @user.fullname = params[:fullname]
         @user.role_id = params[:role_id] if !params[:role_id].nil?
         @user.kinect_angle = params[:kinect_angle]
+        @user.status = params[:status]
         respond_to do |format|
           if @user.save()
             format.json { render json: {:updated => true}  }

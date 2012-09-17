@@ -30,7 +30,7 @@ module Api
           if @sick.save
             format.json { render json: @sick, status: :created, location: @sick }
           else
-            format.json { render json: {:errors => @sick.errors}, status: :unprocessable_entity }
+            format.json { render json: {:errors => @sick.errors} }
           end
         end
       end
@@ -43,7 +43,7 @@ module Api
           if @sick.update_attributes(params[:sick])
             format.json { render json: {:updated => true} }
           else
-            format.json { render json: {:errors => @sick.errors }, status: :unprocessable_entity }
+            format.json { render json: {:errors => @sick.errors } }
           end
         end
       end

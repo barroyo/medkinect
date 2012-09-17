@@ -31,7 +31,7 @@ module Api
           if @role.save
             format.json { render json: @role, status: :created, location: @role }
           else
-            format.json { render json: @role.errors, status: :unprocessable_entity }
+            format.json { render json: @role.errors }
           end
         end
       end
@@ -44,7 +44,7 @@ module Api
           if @role.update_attributes(params[:role])
             format.json { render json: {:updated => true} }
           else
-            format.json { render json: @role.errors, status: :unprocessable_entity }
+            format.json { render json: @role.errors }
           end
         end
       end

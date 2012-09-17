@@ -32,7 +32,7 @@ module Api
           if @calendar.save
             format.json { render json: @calendar, status: :created, location: @calendar }
           else
-            format.json { render json: {:errors => @calendar.errors}, status: :unprocessable_entity }
+            format.json { render json: {:errors => @calendar.errors} }
           end
         end
       end
@@ -45,7 +45,7 @@ module Api
           if @calendar.update_attributes(params[:calendar])
             format.json { render json: {:updated => true} }
           else
-            format.json { render json: {:errors =>@calendar.errors}, status: :unprocessable_entity }
+            format.json { render json: {:errors =>@calendar.errors} }
           end
         end
       end
