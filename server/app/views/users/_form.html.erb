@@ -43,7 +43,9 @@
 	<table>
 		<tr>
 			<td>
-				<%= select_tag  "specialismlist", options_from_collection_for_select(Specialism.find(:all),"id", "title"), :multiple=>true, :size => 8, :id => "select1", :class=>"select-box" %><br>
+				<%= select_tag  "specialismlist", options_from_collection_for_select(Specialism.find(:all,
+         :conditions => ['id not in (?)', @user.specialisms.map(&:id).join(',')]),"id", "title"), 
+         :multiple=>true, :size => 8, :id => "select1", :class=>"select-box" %><br>
 				<a href="#" id="add-row" class="arrow">add >></a>
 			</td>
 			<td>

@@ -4,12 +4,16 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
+    <th>Actions</th>
   </tr>
 
 <% @Specialisms.each do |specialism| %>
   <tr>
     <td><%= specialism.title %></td>
     <td><%= specialism.description %></td>
+    <td>
+    	<%= link_to 'Edit', edit_specialism_path(specialism), :class=>"greybutton" %> <%= link_to 'Destroy', specialism, confirm: 'Are you sure?', method: :delete, :class => "redbutton" %>
+    </td>
   </tr>
 <% end %>
 </table>
