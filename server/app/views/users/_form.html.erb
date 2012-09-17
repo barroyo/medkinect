@@ -43,8 +43,21 @@
 	<table>
 		<tr>
 			<td>
-				<%= select_tag  "specialismlist", options_from_collection_for_select(Specialism.find(:all,
-         :conditions => ['id not in (?)', @user.specialisms.map(&:id).join(',')]),"id", "title"), 
+        <%
+          list = []
+          @user.specialisms.each do |s|
+            list << s.id
+          end
+          if !@user.id.nil?
+            @specialismlist = Specialism.find(:all,
+           :conditions => ['id not in (?)', list])
+          else
+            @specialismlist = Specialism.find(:all)
+          end
+        %>
+        
+
+				<%= select_tag  "specialismlist", options_from_collection_for_select(@specialismlist,"id", "title"), 
          :multiple=>true, :size => 8, :id => "select1", :class=>"select-box" %><br>
 				<a href="#" id="add-row" class="arrow">add >></a>
 			</td>
@@ -56,6 +69,6 @@
 	</table>
   </div>
   <div class="actions">
-    <%= f.submit :class =>"greenbutton" %>
+    <%= f.submit :class =>"greenbutton", :id => 'user_submit'%>
   </div>
 <% end %>

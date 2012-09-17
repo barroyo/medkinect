@@ -15,6 +15,9 @@
 //= require_tree .
 
 $(document).ready(function() {
+	$('input#user_submit').click(function() {
+		jQuery('select#select2 option').attr('selected',true);
+	});
 	$("a[href='http://apycom.com/']").parent().remove();
 	$("div#tabs").tabs();
 	$('#add-row').click(function() {
