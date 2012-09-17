@@ -10,14 +10,20 @@ class TwitterController < ApplicationController
   end
 
   def post
-  	 token = session[:user].integration.token
-  	 secret = session[:user].integration.secret
+  	token = current_user.integration.token
+  	secret = current_user.integration.secret
   	@client = Twitter::Client.new(
 		  :oauth_token => token,
 		  :oauth_token_secret => secret
 		)
-  	respond_to do |format|
-  		format.json {render json: @client.update("From Our Web Application")}
-  	end
+     
+  	
+      begin
+        @client.update(params[:tweet_text])
+        flash[:notice] = 'Tweet Sent Successfully'
+      rescue Exception => e
+        flash[:notice] = "Tweet failed, #{e.message}"
+      end
+      redirect_to home_path
   end
 end

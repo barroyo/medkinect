@@ -28,8 +28,8 @@
     <%= f.date_select :birthdate, :start_year => Time.now.year - 100  %>
   </div>
   <div class="field">
-    <%= f.label :blood_id %><br />
-    <%= f.text_field :blood_id %>
+    <%= f.label :blood_type %><br />
+    <%= f.select :blood_id, $blood_type, :selected => !@patient.blood_id.nil? ? @patient.blood_id : 0 %>
   </div>
   <div class="field">
     <%= f.label :mobile %><br />

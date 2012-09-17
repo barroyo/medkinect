@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
 
   $calendars_type = {"Medical Consultation" => "mc", "Date" => "dt"}
   $calendars_type_label ={"mc" => "Medical Consultation","dt" => "Date"}
+
+
+  $blood_type = {"A+" => 0 , "A-" => 1, "B+" => 2, "B-" => 3,
+    "O+" => 4, "O-" => 5, "AB+" => 6, "AB+-" => 7}
+  $blood_type_label = {  0 => "A+",  1 => "A-", 2 => "B+",  3 => "B-",
+     4 => "O+",  5 => "O-", 6 => "AB+", 7 => "AB+-" }
   respond_to :json,:xml,:html
   ##add login method
    

@@ -1,8 +1,11 @@
 <%= notice %>
 <%if !session[:user].integration.nil? %>
-	hola vithe, a postear en twitter
+	<form action="<%= twitter_post_path %>" method="post">
+		<textarea name="tweet_text" placeholder="Compose new Tweet" class="tweet-box"></textarea><br>
+		<input name="tweet_submit" type="submit" value="Tweet" class="nicebutton right">
+	</form>
 <% end %>
-
+<div class="clean"></div>
 <% @twi.each do |tweet| %>
   <div style="position:relative;margin-left: 60px;">
   	<a class="account-group js-account-group js-action-profile js-user-profile-link js-nav" href="/medkinect" data-user-id="822285216">

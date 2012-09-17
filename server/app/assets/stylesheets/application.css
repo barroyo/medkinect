@@ -421,3 +421,21 @@ margin: auto;
 border-radius: 10px;
 margin-bottom: 6px;
 }
+
+
+textarea.tweet-box{
+	width: 827px;
+	padding: 6px 8px 5px;
+line-height: 18px;
+border-radius: 5px;
+border-color: #56B4EF;
+}
+textarea.tweet-box:focus {
+border-color: #56B4EF;
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .05),0 0 8px rgba(82, 168, 236, .6);
+-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, .05),0 0 8px rgba(82, 168, 236, .6) !important;
+}
+
+.right {float: right;}
+.clean{clear: both;}

@@ -4,7 +4,7 @@ Server::Application.routes.draw do
   get 'twitter', :to => 'twitter#index'
   get "twitter/index"
   get 'auth/twitter', :as => :twitter_authentication
-  get "twitter/post"
+  post "twitter/post", :as => :twitter_post
 
   resources :calendars
 
