@@ -17,7 +17,7 @@
     <td><%= patient.lastname %></td>
     <td><%= patient.dni %></td>
     <td><%= patient.birthdate %></td>
-    <td><%= patient.blood_id %></td>
+    <td><%= $blood_type_label[patient.blood_id] %></td>
     <td><%= patient.historical_id %></td>
     <td><%= link_to 'Show', patient, :class=>"nicebutton" %>    
     <% if admin_med_access %>
