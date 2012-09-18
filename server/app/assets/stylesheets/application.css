@@ -71,6 +71,9 @@ div#header {
 	height: 40px;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
 }
 
 .preload1 {
@@ -165,7 +168,9 @@ div.middle {
 	background-color: white;
 	padding: 25px;
 	border: 1px solid #8AE65C;
-
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
 }
 .nifty_form {
 	margin: auto;
@@ -428,6 +433,9 @@ background-position-x: 49%;
 background-position-y: 38px;
 background-color: #D4F4D8;
 border: 1px solid #8AE65C;
+-moz-box-shadow: 0 0 5px #888;
+-webkit-box-shadow: 0 0 5px#888;
+box-shadow: 0 0 5px #888;
 }
 
 

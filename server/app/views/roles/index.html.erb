@@ -5,9 +5,7 @@
     <th>Title</th>
     <th>Description</th>
     <th>Access</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>
   </tr>
 
 <% @roles.each do |role| %>
@@ -15,9 +13,9 @@
     <td><%= role.title %></td>
     <td><%= role.description %></td>
     <td><%= $role_access_labels[role.access] %></td>
-    <td><%= link_to 'Show', role %></td>
-    <td><%= link_to 'Edit', edit_role_path(role) %></td>
-    <td><%= link_to 'Destroy', role, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', role, :class=>"nicebutton" %>
+    <%= link_to 'Edit', edit_role_path(role), :class=>"greybutton" %>
+    <%= link_to 'Destroy', role, confirm: 'Are you sure?', method: :delete, :class=>"redbutton" %></td>
   </tr>
 <% end %>
 </table>

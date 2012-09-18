@@ -20,7 +20,7 @@
     <td><%= patient.blood_id %></td>
     <td><%= patient.historical_id %></td>
     <td><%= link_to 'Show', patient, :class=>"nicebutton" %>    
-    <% if current_user.role.access == 'med' || current_user.role.access == 'all'%>
+    <% if admin_med_access %>
     <%= link_to 'Edit', edit_patient_path(patient), :class=>"greybutton" %>
     <% end %>
     <% if current_user.role.access == 'all'%>
