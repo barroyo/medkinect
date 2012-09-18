@@ -4,18 +4,16 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>
   </tr>
 
 <% @sicks.each do |sick| %>
   <tr>
     <td><%= sick.title %></td>
     <td><%= sick.description %></td>
-    <td><%= link_to 'Show', sick %></td>
-    <td><%= link_to 'Edit', edit_sick_path(sick) %></td>
-    <td><%= link_to 'Destroy', sick, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', sick, :class=>"nicebutton" %>
+    <%= link_to 'Edit', edit_sick_path(sick), :class=>"greybutton" %>
+    <%= link_to 'Destroy', sick, confirm: 'Are you sure?', method: :delete, :class=>"redbutton" %></td>
   </tr>
 <% end %>
 </table>

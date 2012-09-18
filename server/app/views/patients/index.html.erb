@@ -19,9 +19,13 @@
     <td><%= patient.birthdate %></td>
     <td><%= patient.blood_id %></td>
     <td><%= patient.historical_id %></td>
-    <td><%= link_to 'Show', patient, :class=>"nicebutton" %>
+    <td><%= link_to 'Show', patient, :class=>"nicebutton" %>    
+    <% if current_user.role.access == 'med' || current_user.role.access == 'all'%>
     <%= link_to 'Edit', edit_patient_path(patient), :class=>"greybutton" %>
-    <%= link_to 'Destroy', patient, confirm: 'Are you sure?', method: :delete, :class=>"redbutton" %></td>
+    <% end %>
+    <% if current_user.role.access == 'all'%>
+    <%# link_to 'Destroy', patient, confirm: 'Are you sure?', method: :delete, :class=>"redbutton" %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

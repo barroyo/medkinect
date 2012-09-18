@@ -164,6 +164,8 @@ div.middle {
 	border-bottom-right-radius: 11px;
 	background-color: white;
 	padding: 25px;
+	border: 1px solid #8AE65C;
+
 }
 .nifty_form {
 	margin: auto;
@@ -420,6 +422,12 @@ width: 900px;
 margin: auto;
 border-radius: 10px;
 margin-bottom: 6px;
+background-image: url(/assets/medkinect_logo02.png);
+background-repeat: no-repeat no-repeat;
+background-position-x: 49%;
+background-position-y: 38px;
+background-color: #D4F4D8;
+border: 1px solid #8AE65C;
 }
 
 
@@ -442,3 +450,6 @@ box-shadow: inset 0 1px 3px rgba(0, 0, 0, .05),0 0 8px rgba(82, 168, 236, .6) !i
 
 .user_info {font-weight: bold;
 color: white;}
+
+.error {color:red;}
+.success {color:green;}

@@ -1,7 +1,10 @@
 class RolesController < ApplicationController
 
-  before_filter :require_login
-  
+  before_filter :require_login, :validate_admin_access
+
+
+
+
   # GET /roles
   # GET /roles.json
   def index
@@ -76,9 +79,12 @@ class RolesController < ApplicationController
   # DELETE /roles/1
   # DELETE /roles/1.json
   def destroy
+    begin
     @role = Role.find(params[:id])
     @role.destroy
-
+    rescue Exception => e
+      flash[:notice] = e.message
+    end
     respond_to do |format|
       format.html { redirect_to roles_url }
       format.json { head :no_content }

@@ -1,7 +1,10 @@
 <div id="tabs">
   <ul>
     <li><a href="#tabs-1">Details</a></li>
-    <li><a href="#tabs-2">Dates</a></li>
+    <% if @user.role.access == 'bas' %>
+    <li><a href="#tabs-2">Dates</a>
+    <% end %>
+    </li>
   </ul>
   <div id="tabs-1">
   <p id="notice"><%= notice %></p>
@@ -38,9 +41,11 @@
     </p>
     <% end %>
   </div>
+   <% if @user.role.access == 'bas' %>
   <div id="tabs-2">
     <%= render :template => 'calendars/show_user_dates' %>
   </div>
+  <% end %>
 </div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

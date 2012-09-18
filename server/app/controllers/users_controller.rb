@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
   before_filter :require_login
-
+  before_filter :validate_medium_access_current, :only => [:index, :show]
+  before_filter :validate_admin_access, :only => [:edit, :new]
+   
   # GET /users
   # GET /users.json
   def index

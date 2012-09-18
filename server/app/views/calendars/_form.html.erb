@@ -13,11 +13,18 @@
 
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= select("calendar","user_id", User.all.collect {|p| [ p.fullname, p.id ]}, :selected => @calendar.user_id ) %>
+    <% basic_roles = []
+     Role.find(:all, :conditions => {:access => 'bas'}).each do |role|
+      basic_roles.push(role.id)
+    end
+    puts basic_roles
+    %>
+    <%= select("calendar","user_id", User.find(:all,:conditions => ['role_id in (?)',
+     basic_roles.join(",")]).collect {|p| [ p.fullname, p.id ]}, :selected => @calendar.user_id ) %>
   </div>
   <div class="field">
     <%= f.label :patient_id %><br />
-    <%= select("calendar","patient_id", Patient.all.collect {|p| [ "#{p.dni} #{p.firstname} #{p.lastname}", p.id ]}, :selected => @calendar.patient_id ) %>
+    <%= select("calendar","patient_id", Patient.all.collect {|p| [ "#{p.dni} - #{p.firstname} #{p.lastname}", p.id ]}, :selected => @calendar.patient_id ) %>
   </div>
   <div class="field">
     <%= f.label :date %><br />

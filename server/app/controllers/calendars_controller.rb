@@ -1,7 +1,8 @@
 class CalendarsController < ApplicationController
 
   before_filter :require_login
-  
+  before_filter :validate_medium_access, :only => [:edit, :new]
+
   # GET /calendars
   # GET /calendars.json
   def  index

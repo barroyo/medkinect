@@ -1,7 +1,7 @@
 class PatientsController < ApplicationController
 
   before_filter :require_login
-
+   before_filter :validate_medium_access, :only => [:edit, :new, :delete]
   # GET /patients
   # GET /patients.json
   def index

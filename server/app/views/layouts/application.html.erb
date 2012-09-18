@@ -27,20 +27,26 @@
 								<%= link_to 'Home', :home %>
 							</li>
 							<li class="top">
-								<a href="<%= users_path %>" class="top_link"><span class="down">Users</span> </a>
-								<ul class="sub">
-									<li>
-										<%= link_to 'New User', new_user_path , :id => "news_user" %>
-									</li>
-								</ul>
+								<% if admin_med_access %>
+									<a href="<%= users_path %>" class="top_link"><span class="down">Users</span> </a>
+									<% if admin_access %>
+									<ul class="sub">
+										<li>
+											<%= link_to 'New User', new_user_path , :id => "news_user" %>
+										</li>
+									</ul>
+									<% end %>
+								<%end%>
 							</li>
 							<li class="top">
 								<a href="<%= patients_path %>" class="top_link"><span class="down">Patients</span> </a>
+								<% if admin_med_access %>
 								<ul class="sub">
 									<li>
 										<%= link_to 'New Patient', new_patient_path , :id => "news_patient" %>
 									</li>
 								</ul>
+								<% end %>
 							</li>
 							<li class="top">
 								<a href="/users/<%=current_user.id%>" id="contacts" class="top_link"><span class="down">Manteinament</span></a>
@@ -54,9 +60,6 @@
 										<%= link_to 'Roles', roles_path, :class => "top_link" %>
 									</li>
 									<li class="top">
-										<%= link_to 'Sicks', sicks_path, :class => "top_link" %>
-									</li>
-									<li class="top">
 										<%= link_to 'Specialisms', specialisms_path, :class => "top_link" %>
 									</li>
 									<% end %>
@@ -65,11 +68,12 @@
 										<%= link_to 'Twitter Int', :twitter_authentication %>
 									</li>
 									<% end %>
+									<li class="top">
+										<%= link_to 'Sicks', sicks_path, :class => "top_link" %>
+									</li>
 								</ul>
 							</li>
 						</ul>
-						<% else %>
-						<span class>Medkinect</span>
 						<% end %>
 					</div>
 				</div>

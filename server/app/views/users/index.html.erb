@@ -6,9 +6,7 @@
     <th scope="col">Email</th>
     <th  scope="col">Fullname</th>
     <th  scope="col">Status</th>
-    <% if current_user.role.access == 'all' %>
     <th scope="col">Actions</td>
-    <% end %>
   </tr>
 
 <% @users.each_with_index do |user, index| %>
@@ -17,9 +15,17 @@
     <td><%= user.email %></td>
     <td><%= user.fullname %></td>
     <td><%= user.status == "en" ?  "Enabled" : "Disabled" %></td>
-    <% if current_user.role.access == 'all' %>
-    <td><%= link_to 'Show', user, :class => "nicebutton" %> <%= link_to 'Edit', edit_user_path(user), :class=>"greybutton" %> <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete, :class => "redbutton" %></td>
-    <% end %>
+    
+    <td>
+      <% if admin_med_access || admin_access %>
+      <%= link_to 'Show', user, :class => "nicebutton" %>
+      <%end%>
+      <% if admin_access %> 
+      <%= link_to 'Edit', edit_user_path(user), :class=>"greybutton" %> 
+      <%# link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete, :class => "redbutton" %>
+      <% end %>
+    </td>
+   
   </tr>
 <% end %>
 </table>

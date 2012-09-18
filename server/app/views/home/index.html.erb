@@ -1,5 +1,7 @@
+<div class="<%= flash[:class_css] if !flash[:class_css].nil? %>">
 <%= notice %>
-<%if !session[:user].integration.nil? %>
+</div>
+<%if !current_user.integration.nil? %>
 	<form action="<%= twitter_post_path %>" method="post">
 		<textarea name="tweet_text" placeholder="Compose new Tweet" class="tweet-box"></textarea><br>
 		<input name="tweet_submit" type="submit" value="Tweet" class="nicebutton right">

@@ -48,7 +48,7 @@
           @user.specialisms.each do |s|
             list << s.id
           end
-          if !@user.id.nil?
+          if !@user.specialisms.empty?
             @specialismlist = Specialism.find(:all,
            :conditions => ['id not in (?)', list])
           else
