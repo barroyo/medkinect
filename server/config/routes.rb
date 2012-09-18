@@ -18,6 +18,7 @@ Server::Application.routes.draw do
       #users controller
       post "users/login", :to => "users#login"
       get "users", :to => "users#index", :defaults => { :format => 'json' }
+      get "users/basic", :to => "users#get_basic_users", :defaults => { :format => 'json' }
       get "users/:user_id", :to => "users#show", :defaults => { :format => 'json' }
       post "users/:user_id/update", :to => "users#update", :defaults => { :format => 'json' }
       post "users/:user_id/change_password", :to => "users#change_password", :defaults => { :format => 'json' }

@@ -114,7 +114,17 @@ module Api
           format.json { render json: {:deleted => true} }
         end
       end
-  
+      
+      def get_basic_users
+        @users = User.find(:all,:conditions => ['role_id in (?)',
+     Role.find(:all, :conditions => {:access => 'bas'}).each.map(&:id).join(',')])
+         respond_to do |format|
+          format.json { render json: @users }
+        end
+      end
+
+
+
     end
     
   end
