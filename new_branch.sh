@@ -14,8 +14,6 @@ fi
 
 echo "### Creating branch $NEW_BRANCH from $PARENT_BRANCH" ;
 
-cd ~/src/vr
-
 git fetch origin
 
 git branch $NEW_BRANCH origin/$PARENT_BRANCH
